@@ -4,9 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
   <%- include('partials/_navbar.ejs') %>
+  
+  <div class="landing-image"></div> 
+  <!-- having this empty gives me a place to add a background image directly from css file -->
+
   <% if (user) { %>
     <h1>Welcome to the travel blog, <%= user.username %>!</h1>
     <p>

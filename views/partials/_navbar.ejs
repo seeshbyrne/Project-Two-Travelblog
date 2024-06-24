@@ -1,11 +1,18 @@
 <nav>
     <a href="/">Home</a>
     <% if (user) { %>
-        <a href="/posts">View All posts</a>
-        <a href="/users/profile">Profile</a>
-        <a href="/auth/sign-out">Sign Out</a>
+        <div class="logo-container">
+        <div class="travel-icon"></div>
+        <div class="nav-links">
+            <a href="/posts">View All posts</a>
+            <a href="/users/profile">Profile</a>
+            <a href="/auth/sign-out">Sign Out</a>
+        </div>
+    </div>
     <% } else { %>
-        <a href="/auth/sign-in">Sign In</a>
-        <a href="/auth/sign-up">Sign Up</a>
+        <div class="auth-links">
+            <a href="/auth/sign-in">Sign In</a>
+            <a href="/auth/sign-up">Sign Up</a>
+        </div>
     <% } %>
 </nav>
