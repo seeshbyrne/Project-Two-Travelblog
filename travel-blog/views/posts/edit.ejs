@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Edit Post</h1>
+    <form action="/users/<%= user._id %>/posts/<%= post._id %>?_method=PUT" method="post">
+        <label>
+            City:
+            <input name="city" value="<%= post.city %>">
+            Country:
+            <input name="country" value="<%= post.country %>">
+            Accommodation:
+            <input name="accommodation" value="<%= post.accommodation %>">
+            Food:
+            <input name=food" value="<%= post.food %>">
+        </label>
+        <button>Update Post</button>
+    </form>
+</body>
+</html>
