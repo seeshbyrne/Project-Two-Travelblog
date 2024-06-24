@@ -8,17 +8,24 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Edit Post</h1>
-    <form action="/users/<%= user._id %>/posts/<%= post._id %>?_method=PUT" method="post">
+    <form action="/posts/<%= post._id %>?_method=PUT" method="post">
         <label>
             City:
-            <input name="city" value="<%= post.city %>">
+            <input name="city" required value="<%= post.city %>">
+        </label>
+        <label>
             Country:
-            <input name="country" value="<%= post.country %>">
+            <input name="country" required value="<%= post.country %>">
+        </label>
+        <label>
             Accommodation:
             <input name="accommodation" value="<%= post.accommodation %>">
-            Food:
-            <input name=food" value="<%= post.food %>">
         </label>
+        <label>
+            Food:
+            <input name="food" value="<%= post.food %>">
+        </label>
+        
         <button>Update Post</button>
     </form>
 </body>

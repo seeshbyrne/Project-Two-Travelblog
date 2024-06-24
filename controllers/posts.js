@@ -1,16 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const cloudinary = require('../middleware/cloudinary');
+const upload = require('../middleware/multer');
 
-const User = require('../models/user.js');
+const Post = require('../models/post');
 
 // ROUTES GO HERE
 
 // INDEX
 router.get('/', async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id);
+        const posts = await Post.find({}).populate('owner');
+        console.log(posts);
+
         res.render('posts/index.ejs', {
-            destination: user.destination
+            posts: posts
         });
     } catch (error) {
         console.log(error);
@@ -23,71 +27,133 @@ router.get('/new', (req, res) => {
     res.render('posts/new.ejs');
 });
 
-// CREATE - This will create new posts in the embedded destination array on the user model
-router.post('/', async (req, res) => {
-    try {
-        const user = await User.findById(req.session.user._id);
-        user.destination.push(req.body);
-        await user.save();
-        res.redirect(`/users/${ user._id }/posts`);
-    } catch (error) {
-        console.log(error);
-        res.redirect('/');
-    }
-});
-
 // SHOW
-router.get('/:postId', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id);
-        const post = user.destination.id(req.params.id);
+        const post = await Post.findById(req.params.id).populate('owner');
+
+        const alreadyFavorited = post.favoritedByUsers.some((userId) => userId.equals(req.session.user._id));
+        
         res.render('posts/show.ejs', {
             post: post,
+            alreadyFavorited: alreadyFavorited
         });
     } catch (error) {
         console.log(error);
-        res.redirect('/');
+        res.redirect('/posts');
     }
 });
 
-// EDIT
-router.get('/:postId/edit', async (req, res) => {
+//upload.array('image', 6) this instead for multiple images
+
+// CREATE - This will create new posts in the embedded destination array on the user model
+router.post('/', async (req, res) => {
+    // upload.single('image')
     try {
-        const user = await User.findById(req.session.user._id);
-        const post = user.destination.id(req.params.id);
+        // const imageResult = await cloudinary.uploader.upload(req.file.path); //this part is whatever is taken in from the browse selected bit
+        //     req.body.images = cloudinary.imageResult.secure_url;
+        //     req.body.cloudinary_id = imageResult.public_id;
+        
+        req.body.owner = req.session.user._id;
+        await Post.create(req.body);  
+    } catch (error) {
+        console.log(error);
+    }
+    res.redirect('/posts');
+});
+
+// EDIT
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
         res.render('posts/edit.ejs', {
-            post: post,
+            post: post
         })
     } catch (error) {
         console.log(error);
-        res.redirect('/');
+        res.redirect('/posts');
     }
 });
 
 // UPDATE
-router.put('/:postId', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id);
-        const post = user.destination.id(req.params.id);
-        post.set(req.body);
-        await user.save();
-        res.redirect(`/users/${ req.session.user._id}/posts`);
+        const post = await Post.findById(req.params.id);
+        if (post.owner.equals(req.session.user._id)) {
+            await post.updateOne(req.body);
+        }
+        res.redirect('/posts/' + post._id);
     } catch (error) {
         console.log(error);
-        res.redirect('/');
+        res.redirect('/posts');
     }
 });
 
 // DELETE
-router.delete('/:postId', async (req, res,) => {
+router.delete('/:id', async (req, res,) => {
     try {
-        const user = await User.findById(req.sessions.user._id);
-        user.destination.id(req.params.id).deleteOne();
-        await user.save();
+        const post = await Post.findById(req.params.id);
+        if (post.owner.equals(req.session.user._id)) {
+            await post.deleteOne();
+        }
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+    res.redirect('/posts');
+});
+
+
+// FAVOURITES
+router.post('/:id/favorite', async (req, res) => {
+    try {
+        await Post.findByIdAndUpdate(req.params.id, {
+            $push: { favoritedByUsers: req.session.user._id }
+        })
     } catch (error) {
         console.log(error);
     }
-    res.redirect('/');
+    res.redirect('/posts/' + req.params.id);
 });
 
-module.exports = router
+// DELETE FAVOURITES
+router.delete('/:id/favorites', async (req, res) => {
+    try {
+        await Post.findByIdAndDelete(req.params.id, {
+            $pull: { favoritedByUsers: req.session.user._id }
+        });
+    } catch (error) {
+        console.log(error)
+    }
+    res.redirect('/posts/' + req.params.id);
+})
+
+// IMAGE
+// router.post('/:id/images', upload.array('image', 6), async (req, res) => {
+//     try {
+//         const post = await Post.findById(req.params.id);
+//         const imagesUrls = [];
+//         const cloudinaryIds = [];
+        
+//         for (const file of req.files) {
+//             const imageResult = await cloudinary.uploader.upload(file.path)
+//             imagesUrls.push(imageResult.secure_url);
+//             cloudinaryIds.push(imageResult.public_id);
+//         }
+
+//         if (post) {
+//             await Post.findByIdAndUpdate(req.params.id, {
+//                 $push: {
+//                     images: { $each: imagesUrls },
+//                     cloudinary_id: { $each: cloudinaryIds }
+//                 }
+//             });
+//         };
+
+//     } catch (error) {
+//         console.log(error);
+//     }
+//     res.redirect('/posts/' + req.params.id);
+// });
+
+module.exports = router;

@@ -3,28 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My posts</title>
+    <title>All posts</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Look at my travel posts</h1>
-    <a href="/users/<%= user._id %>/posts/new">Add new post</a>
+    <h1>Here are all the posts</h1>
+    <a href="/posts/new">Add new post</a>
     <ul>
-        <% if (destination.length > 0) { %>
-            <% destination.forEach((post) => { %>
-                <li>
-                    <a href="/users/<%= user._id %>/posts/<%= post._id %>">
-                        <%= post.city %>
-                        <%= post.country %>
-                        <%= post.accommodation %>
-                        <%= post.food %>
-                    </a>
-                    <a href="/users/<%= user._id %>/posts/<$= post._id %>/edit">Edit post</a>
-                </li>
-            <% }) %>
-        <% } else { %>
-            <p>There are no posts available.</p>
-        <% } %>
+        <% posts.forEach((post) => { %>
+            <li>
+                <%= post.city %>
+                <%= post.country %>
+                <%= post.accommodation %>
+                <%= post.food %>
+                <a href="/posts/<%= post._id %>">More Details</a>
+            </li>
+        <% }) %>
     </ul>
 </body>
 </html>
