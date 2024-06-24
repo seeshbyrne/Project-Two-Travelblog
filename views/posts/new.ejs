@@ -8,7 +8,7 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>New Post</h1>
-    <form action="/posts" method="post">
+    <form action="/posts" enctype="multipart/form-data" method="post">
         <label>
             City:
             <input name="city" required>
@@ -30,7 +30,7 @@
             Image:
             <input type="file" name="image">
         </label>
-        
+
         <button>Add Post</button>
     </form>
 </body>

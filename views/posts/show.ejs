@@ -7,26 +7,28 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>City name here</h1>
+    <h1><%= post.city %></h1>
+
+    <h2>Details:</h2>
+    <p>Country: <%= post.country %></p>
+    <p>Best place to stay: <%= post.accommodation %></p>
+    <p>Best place to eat: <%= post.food %></p>
+
     <p>
         Images:
         <% post.images.forEach(image => { %>
             <img src="<%= image %>" alt="">
-        <% })%>
+        <% }) %>
     </p>
     <p>
         Add New Image
-        <form action="/posts/<%= post._id %>/images" enctype="multipart/
-            form-data" method="post">
+        <form action="/posts/<%= post._id %>/images" enctype="multipart/form-data" method="post">
             <input type="file" name="image">
             <button>Upload Image</button>
         </form>
     </p>
 
-    <h2>Details:</h2>
-        <p>Country: <%= post.country %></p>
-        <p>Best place to stay: <%= post.accommodation %></p>
-        <p>Best place to eat: <%= post.food %></p>
+    
     
     <h2>Owner:</h2>
     <% if (post.owner._id.equals(user._id)) { %>

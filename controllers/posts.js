@@ -47,19 +47,23 @@ router.get('/:id', async (req, res) => {
 //upload.array('image', 6) this instead for multiple images
 
 // CREATE - This will create new posts in the embedded destination array on the user model
-router.post('/', async (req, res) => {
-    // upload.single('image')
+router.post('/', upload.single('image'), async (req, res) => {
     try {
-        // const imageResult = await cloudinary.uploader.upload(req.file.path); //this part is whatever is taken in from the browse selected bit
-        //     req.body.images = cloudinary.imageResult.secure_url;
-        //     req.body.cloudinary_id = imageResult.public_id;
-        
+        if (!req.file) {
+            throw new Error("Image file is required");
+        }
+        const imageResult = await cloudinary.uploader.upload(req.file.path);
+
         req.body.owner = req.session.user._id;
-        await Post.create(req.body);  
+        req.body.images = imageResult.secure_url;
+        req.body.cloudinary_id = imageResult.public_id;
+
+        await Post.create(req.body);
+        res.redirect('/posts');
     } catch (error) {
         console.log(error);
+        res.redirect('/posts/new');
     }
-    res.redirect('/posts');
 });
 
 // EDIT
@@ -68,7 +72,7 @@ router.get('/:id/edit', async (req, res) => {
         const post = await Post.findById(req.params.id);
         res.render('posts/edit.ejs', {
             post: post
-        })
+        });
     } catch (error) {
         console.log(error);
         res.redirect('/posts');
@@ -119,7 +123,7 @@ router.post('/:id/favorite', async (req, res) => {
 // DELETE FAVOURITES
 router.delete('/:id/favorites', async (req, res) => {
     try {
-        await Post.findByIdAndDelete(req.params.id, {
+        await Post.findByIdAndUpdate(req.params.id, {
             $pull: { favoritedByUsers: req.session.user._id }
         });
     } catch (error) {
@@ -128,32 +132,34 @@ router.delete('/:id/favorites', async (req, res) => {
     res.redirect('/posts/' + req.params.id);
 })
 
-// IMAGE
-// router.post('/:id/images', upload.array('image', 6), async (req, res) => {
-//     try {
-//         const post = await Post.findById(req.params.id);
-//         const imagesUrls = [];
-//         const cloudinaryIds = [];
-        
-//         for (const file of req.files) {
-//             const imageResult = await cloudinary.uploader.upload(file.path)
-//             imagesUrls.push(imageResult.secure_url);
-//             cloudinaryIds.push(imageResult.public_id);
-//         }
 
-//         if (post) {
-//             await Post.findByIdAndUpdate(req.params.id, {
-//                 $push: {
-//                     images: { $each: imagesUrls },
-//                     cloudinary_id: { $each: cloudinaryIds }
-//                 }
-//             });
-//         };
+router.post('/:id/images', upload.array('image', 6), async (req, res) => {
+    try {
+        if (!req.files || req.files.length === 0) {
+            throw new Error("At least one image file is required");
+        }
+        const post = await Post.findById(req.params.id);
+        const imagesUrls = [];
+        const cloudinaryIds = [];
 
-//     } catch (error) {
-//         console.log(error);
-//     }
-//     res.redirect('/posts/' + req.params.id);
-// });
+        for (const file of req.files) {
+            const imageResult = await cloudinary.uploader.upload(file.path);
+            imagesUrls.push(imageResult.secure_url);
+            cloudinaryIds.push(imageResult.public_id);
+        }
+
+        if (post) {
+            await Post.findByIdAndUpdate(req.params.id, {
+                $push: {
+                    images: { $each: imagesUrls },
+                    cloudinary_id: { $each: cloudinaryIds }
+                }
+            });
+        }
+    } catch(error) {
+        console.log(error);
+    }
+    res.redirect('/posts/' + req.params.id);
+})
 
 module.exports = router;
