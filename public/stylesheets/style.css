@@ -217,3 +217,8 @@ button:hover {
     border: 5px solid black;
     margin: 20px;
 } */
+
+.post-image {
+    height: 200px;
+    width: 200px;
+}
