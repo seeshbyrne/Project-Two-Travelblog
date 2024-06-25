@@ -5,10 +5,22 @@ body {
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
-    width: 100vh;
-    background-color: rgb(246, 251, 249);
+    background-color: rgb(242, 243, 243);
 }
 
+.carousel-image {
+    height: 400px; /* Set the desired height */
+    object-fit: cover; /* This ensures the image covers the container */
+  }
+
+.post-container {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.detail-link > a {
+    text-align: center;
+}
 
 .travel-icon {
     background-image: url();
@@ -20,17 +32,13 @@ body {
     padding-left: 5px;
 }
 
-.nav-links > a {
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-    color: black;
-  }
-  
-.nav-links > a:hover {
-    color: #6f8dae;
-    text-decoration: underline;
-  }
+.welcome-title {
+    margin: 10px 15px;
+}
+
+.welcome-title > h1 {
+    margin-top: 20px;
+}
 
   .signup-page,
 .signin-page {
@@ -116,9 +124,9 @@ button:hover {
     background-repeat: no-repeat;
     width: 40%;
     position: relative;
-  }
+}
   
-  .signin-img {
+.signin-img {
     background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1586&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     min-height: 110vh;
     background-size: cover;
@@ -126,26 +134,86 @@ button:hover {
     width: 40%;
     position: relative;
 
-  }
+}
 
-  .new-post-button {
+.search-add {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.new-post-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid rgb(190, 190, 190);
     border-radius: 10px;
-    width: 10em;
-    padding: 5px;
-    text-decoration: none;
+    width: 9em;
+    height: 2em;
+    padding: 3px;
     text-align: center;
     font-weight: bold;
     color: black;
     background-color: white;
-  }
+    margin-bottom: 20px;
+}
 
-  .new-post-button > a:hover {
+.new-post-button > a:hover {
     color: #6f8dae;
-  }
+}
 
-  .new-post-button > a {
+.new-post-button > a {
     text-decoration: none;
     font-weight: bold;
     color: black;
-  }
+}
+
+.reviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 20px;
+    padding: 10px;
+    height: 500px;
+}
+
+.reviews > p {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.index-header {
+    margin: 10px 15px;
+}
+
+.index-header > h1 {
+    margin-top: 20px;
+}
+
+.profile-header {
+    margin: 10px 15px;
+}
+
+.profile-header > h1 {
+    margin-top: 20px;
+}
+
+.post-header {
+    margin: 10px 15px;
+}
+
+.post-header > h1 {
+    margin-top: 20px;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* #post-box {
+    border: 5px solid black;
+    margin: 20px;
+} */
