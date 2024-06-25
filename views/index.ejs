@@ -8,21 +8,16 @@
 </head>
 <body>
   <%- include('partials/_navbar.ejs') %>
-  
+
   <div class="landing-image"></div> 
   <!-- having this empty gives me a place to add a background image directly from css file -->
 
+  <div class="welcome-title">
   <% if (user) { %>
-    <h1>Welcome to the travel blog, <%= user.username %>!</h1>
-    <p>
-      <a href="/auth/sign-out">Sign out</a>
-    </p>
+    <h1>Welcome to the travel blog <%= user.username %>! </h1>
   <% } else { %>
-    <h1>Welcome to the travel blog, guest.</h1>
-    <p>
-      <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>.
-    </p>
+    <h1>Welcome to the travel blog!</h1>
   <% } %>
+</div>
 </body>
 </html>

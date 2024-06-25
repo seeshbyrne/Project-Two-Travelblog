@@ -10,24 +10,22 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>Profile</h1>
 
-    <h2>My Posts</h2>
-    <p>
+    <h2>My Destinations</h2>
+    <!-- <p>
         Your <%= myPosts.length %> <%= myPosts.length === 1 ? 'post.' : 'posts.' %>
-    </p>
-    <ul>
-        <% myPosts.forEach((post) => { %>
-        <li>
-            A post about <%= post.city %> created by <%= post.owner.username %>.
-            <a href="/posts/<%= post._id %>">View More Details</a>
-        </li>
-        <% }) %>
-    </ul>
+    </p> -->
+<div class="my-destinations">
+    <% myPosts.forEach((post) => { %>
+        A post about <%= post.city %> created by <%= post.owner.username %>.
+        <a href="/posts/<%= post._id %>">View More Details</a>
+    <% }) %>
+</div>
 
 
-    <h2>My Favourites</h2>
-    <p>
+    <h2>Favourites</h2>
+    <!-- <p>
         Your favourite posts: <%= myFavoritePosts.length %>
-    </p>
+    </p> -->
     <ul>
         <% myFavoritePosts.forEach((post) => { %>
         <li>

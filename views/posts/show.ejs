@@ -8,19 +8,17 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= post.city %></h1>
-
-    <h2>Details:</h2>
-    <p>Country: <%= post.country %></p>
-    <p>Best place to stay: <%= post.accommodation %></p>
-    <p>Best place to eat: <%= post.food %></p>
-
+    <div class="city-name"><h1><%= post.city %></h1></div>
+    <div class="country-title"><h2><%= post.country %></h2></div>
     <p>
-        Images:
         <% post.images.forEach(image => { %>
             <img src="<%= image %>" alt="">
         <% }) %>
     </p>
+    <h4>Posted by: <%= post.owner.username %></h4>
+    
+    <p>Best place to stay: <%= post.accommodation %></p>
+    <p>Best place to eat: <%= post.food %></p>
     <p>
         Add New Image
         <form action="/posts/<%= post._id %>/images" enctype="multipart/form-data" method="post">
@@ -31,10 +29,10 @@
 
     
     
-    <h2>Owner:</h2>
+    
     <% if (post.owner._id.equals(user._id)) { %>
         <p>This is your post</p>
-        <a href="/posts/<%= post._id %>/edit">Edit Post</a>
+        <div class="edit-post-button"><a href="/posts/<%= post._id %>/edit">Edit Post</a></div>
         <form 
             action="/posts/<%= post._id %>?_method=DELETE"
             method="post">
@@ -44,7 +42,6 @@
         <p>Post created by <%= post.owner.username %></p>
     <% } %>
 
-    <h2>Favorites</h2>
     <p>Favorited by <%= post.favoritedByUsers.length %> users</p>
     <% if (alreadyFavorited) { %>
         <form action="/posts/<%= post._id %>/favorites?_method=DELETE" method="post">

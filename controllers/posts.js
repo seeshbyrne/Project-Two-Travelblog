@@ -10,9 +10,18 @@ const Post = require('../models/post');
 // INDEX
 router.get('/', async (req, res) => {
     try {
-        const posts = await Post.find({}).populate('owner');
-        console.log(posts);
-
+        const searchQuery = req.query.search;
+        let posts;
+        if (searchQuery) {
+            // Create a case-insensitive regex for the search query
+            const regex = new RegExp(searchQuery, 'i');
+            // Find posts where the city or country matches the search query
+            posts = await Post.find({
+                $or: [{ city: regex }, { country: regex }]}).populate('owner');
+        } else {
+            // If there's no search query, find all posts
+            posts = await Post.find({}).populate('owner');
+        }
         res.render('posts/index.ejs', {
             posts: posts
         });

@@ -8,18 +8,25 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Here are all the posts</h1>
-    <a href="/posts/new">Add new post</a>
-    <ul>
+    <div class="index-header">
+        <h1>Here are all the posts</h1>
+
+        <form action="/posts" method="GET">
+            <input type="text" name="search" placeholder="Search...city...country...">
+            <button>Search</button>
+        </form>
+
+        <div class="new-post-button"><a href="/posts/new">Add new post</a></div>
+
+    </div>
+    <div class="post-container">
         <% posts.forEach((post) => { %>
-            <li>
-                <%= post.city %>
-                <%= post.country %>
-                <%= post.accommodation %>
-                <%= post.food %>
-                <a href="/posts/<%= post._id %>">More Details</a>
-            </li>
+            <a href="/posts/<%= post._id %>">
+                <h4><%= post.city %></h4>
+                    <p><%= post.country %></p>
+              </a>
+            <a href="/posts/<%= post._id %>">More Details</a>
         <% }) %>
-    </ul>
+    </div>
 </body>
 </html>
