@@ -5,18 +5,13 @@ body {
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
-    background-color: rgb(242, 243, 243);
+    background-color: rgb(255, 255, 255);
 }
 
 .carousel-image {
     height: 400px; /* Set the desired height */
     object-fit: cover; /* This ensures the image covers the container */
   }
-
-.post-container {
-    margin-top: 10px;
-    text-align: center;
-}
 
 .detail-link > a {
     text-align: center;
@@ -34,10 +29,6 @@ body {
 
 .welcome-title {
     margin: 10px 15px;
-}
-
-.welcome-title > h1 {
-    margin-top: 20px;
 }
 
   .signup-page,
@@ -186,39 +177,77 @@ button:hover {
     margin: 10px 15px;
 }
 
-.index-header > h1 {
-    margin-top: 20px;
+.edit-header {
+    margin: 10px 15px;
+}
+
+.new-header {
+    margin: 10px 15px;
 }
 
 .profile-header {
     margin: 10px 15px;
 }
 
-.profile-header > h1 {
-    margin-top: 20px;
+.post-container {
+    margin: 10px;
+    background-color: white;
+    text-align: center;
+    height: 300px;
+    position: relative;
 }
 
 .post-header {
     margin: 10px 15px;
 }
 
-.post-header > h1 {
-    margin-top: 20px;
+.destination-header {
+    margin: 10px 15px;
+}
+
+.favorites-header {
+    margin: 10px 15px;
+}
+
+.post-content {
+    position: relative;
+}
+
+.post-image-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
 }
 
 .post-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    border: 2px solid black;
     border-radius: 10px;
-    margin-bottom: 10px;
+    object-fit: cover;
 }
 
-/* #post-box {
-    border: 5px solid black;
-    margin: 20px;
-} */
+.post-text {
+    position: absolute; /* Position text absolutely within the relative container */
+    top: 85%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset by half the width and height */
+    color: white; /* Ensure text is readable over the image */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    transition: transform 0.6s ease;
+}
+.post-text:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
 
-.post-image {
-    height: 200px;
-    width: 200px;
+.reviews {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-style: italic;
+    line-height: 190%;
 }

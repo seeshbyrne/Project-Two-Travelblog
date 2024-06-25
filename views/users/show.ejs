@@ -11,31 +11,45 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <div class="profile-header"><h1>Profile</h1></div>
-    
-    <div class="container">
+    <div class="destination-header">
         <h2>My Destinations</h2>
-    <div class="my-destinations">
-    <% myPosts.forEach((post) => { %>
-        A post about <%= post.city %> created by <%= post.owner.username %>.
-        <a href="/posts/<%= post._id %>">View More Details</a>
-    <% }) %>
-    </div>
-
-
-        <h2>Favourites</h2>
-        <!-- <p>
-            Your favourite posts: <%= myFavoritePosts.length %>
-        </p> -->
-        <ul>
-            <% myFavoritePosts.forEach((post) => { %>
-            <li>
-                A post about <%= post.city %> created by <%= post.owner.username %>.
-                <a href="/posts/<%= post._id %>">View More Details</a>
-            </li>
+    </div>    
+        <div class="row my-destinations">
+            <% myPosts.forEach((post) => { %>
+                <div class="col-md-3 mb-4">
+                    <div class="post-container">
+                        <a href="/posts/<%= post._id %>">
+                            <div class="post-image-container">
+                                <img src="<%= post.images %>" alt="<%= post.city %> image" class="post-image">
+                                <div class="post-text">
+                                    <h4><%= post.city %></h4>
+                                    <p><%= post.country %></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             <% }) %>
-        </ul>
-    </div>
-
-
+        </div>
+<div class="favorites-header">
+<h2>Favourites</h2>
+</div>
+<div class="row my-favorites">
+    <% myFavoritePosts.forEach((post) => { %>
+        <div class="col-md-3 mb-4">
+            <div class="post-container">
+                <a href="/posts/<%= post._id %>">
+                    <div class="post-image-container">
+                        <img src="<%= post.images %>" alt="<%= post.city %> image" class="post-image">
+                        <div class="post-text">
+                            <h4><%= post.city %></h4>
+                            <p><%= post.country %></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    <% }) %>
+</div>
 </body>
 </html>

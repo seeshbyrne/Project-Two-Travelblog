@@ -10,7 +10,9 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
+    <div class="edit-header">
     <h1>Edit Post</h1>
+    </div>
     <form action="/posts/<%= post._id %>?_method=PUT" method="post">
         <label>
             City:
