@@ -9,12 +9,12 @@ const postSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    accommodation: {
+    accommodation: [{
       type: String
-    },
-    food: {
+    }],
+    food: [{
       type: String
-    },
+    }],
     tips: String,
     favouritedByUsers: [{
       type: mongoose.Schema.Types.ObjectId,
@@ -34,14 +34,16 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     }],
-    foodSuggestions: [{
-        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-        suggestion: String
-    }],
-    staySuggestions: [{
-        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-        suggestion: String
-    }]
+    // foodSuggestions: [{
+    //     //user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    //     //suggestion: String
+    //     type: String
+    // }],
+    // staySuggestions: [{
+    //     // user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    //     // suggestion: String
+    //     type: String
+    // }]
 
   });
 

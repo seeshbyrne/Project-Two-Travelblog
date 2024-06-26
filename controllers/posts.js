@@ -38,6 +38,7 @@ router.get('/new', (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const post = await Post.findById(req.params.id).populate('owner');
+        //console.log(post);
 
         const alreadyFavorited = post.favoritedByUsers.some((userId) => userId.equals(req.session.user._id));
         
@@ -77,6 +78,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
+        console.log(post);
         res.render('posts/edit.ejs', {
             post: post
         });
@@ -92,11 +94,10 @@ router.put('/:id', async (req, res) => {
         const post = await Post.findById(req.params.id);
         // Check if the current user owns the post
         if (post.owner.equals(req.session.user._id)) {
-            console.log(req.body);
-            await post.updateOne(req.body);
+        await post.updateOne(req.body);
         }
         res.redirect('/posts/' + post._id);
-    } catch (error) {
+     } catch (error) {
         console.log(error);
         res.redirect('/posts');
     };
@@ -174,14 +175,9 @@ router.post('/:id/images', upload.array('image', 6), async (req, res) => {
 //NEW POST CREATE ROUTE FOR FOOD SUGGESTIONS
 router.post('/:id/food-suggestions', async (req, res) => {
     try {
-        const post = await Post.findById(req.params.id);
-        if (post) {
-            post.foodSuggestions.push({
-                user: req.session.user._id,
-                suggestion: req.body.suggestion
-            });
-            await post.save();
-        }
+        await Post.findByIdAndUpdate(req.params.id, {
+            $push: { food: req.body.food }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -191,14 +187,9 @@ router.post('/:id/food-suggestions', async (req, res) => {
 //NEW POST CREATE ROUTE FOR ACCOMMODATION SUGGESTIONS
 router.post('/:id/stay-suggestions', async (req, res) => {
     try {
-        const post = await Post.findById(req.params.id);
-        if (post) {
-            post.staySuggestions.push({
-                user: req.session.user._id,
-                suggestion: req.body.suggestion
-            });
-            await post.save();
-        }
+        await Post.findByIdAndUpdate(req.params.id, {
+            $push: { accommodation: req.body.accommodation }
+        });
     } catch (error) {
         console.log(error);
     }

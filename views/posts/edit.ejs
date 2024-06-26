@@ -29,20 +29,18 @@
 
         <div class="mb-3">
         <label class="form-label">Accommodation Ideas:</label>
-            <input class="form-control" name="accommodation" value="<%= post.accommodation %>">
         <div>
-            <% post.staySuggestions.forEach(suggestion => { %>
-                <input class="form-control" name="staySuggestions[<%= suggestion._id %>]" value="<%= suggestion.suggestion %>">
+            <% post.accommodation.forEach(suggestion => { %>
+                <input class="form-control" name="accommodation" value="<%= suggestion %>">
             <% }) %>
         </div>
     </div>
 
         <div class="mb-3">
         <label class="form-label">Food Suggestions:</label>
-            <input class="form-control" name="food" value="<%= post.food %>">
         <div>
-            <% post.foodSuggestions.forEach(suggestion => { %>
-                <input class="form-control" name="foodSuggestions[<%= suggestion._id %>]" value="<%= suggestion.suggestion %>">
+            <% post.food.forEach(suggestion => { %>
+                <input class="form-control" name="food" value="<%= suggestion %>">
             <% }) %>
         </div>
     </div>

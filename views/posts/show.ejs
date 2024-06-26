@@ -32,25 +32,23 @@
     <div class="post-details">
 
         <h4>Places to stay:</h4>
-        <%= post.accommodation %>
         <div class="stay-suggestions">
-            <% post.staySuggestions.forEach(suggestion => { %>
-                <p><%= suggestion.user.username %> <%= suggestion.suggestion %></p>
+            <% post.accommodation.forEach(suggestion => { %>
+                <p><%= suggestion %></p>
             <% }) %>
             <form action="/posts/<%= post._id %>/stay-suggestions" method="post">
-                <textarea name="suggestion" placeholder="Suggest a place to stay" required></textarea>
+                <textarea name="accommodation" placeholder="Suggest a place to stay" required></textarea>
                 <button>Add suggestion</button>
             </form>
         </div>
 
         <h4>Places to eat:</h4>
-        <%= post.food %>    
         <div class="food-suggestions">
-            <% post.foodSuggestions.forEach(suggestion => { %>
-                <p><%= suggestion.user.username %> <%= suggestion.suggestion %></p>
+            <% post.food.forEach(suggestion => { %>
+                <p><%= suggestion %></p>
             <% }) %>
             <form action="/posts/<%= post._id %>/food-suggestions" method="post">
-                <textarea name="suggestion" placeholder="Add a food suggestion" required></textarea>
+                <textarea name="food" placeholder="Add a food suggestion" required></textarea>
                 <button>Add suggestion</button>
             </form>
         </div>
@@ -71,16 +69,13 @@
     
     
     
-    <% if (post.owner._id.equals(user._id)) { %>
+
         <div class="edit-post-button"><a href="/posts/<%= post._id %>/edit">Edit Post</a></div>
         <form 
             action="/posts/<%= post._id %>?_method=DELETE"
             method="post">
         <button>Delete Post</button>
         </form>
-    <% } else { %>
-        <p>Post created by <%= post.owner.username %></p>
-    <% } %>
 
     <% if (alreadyFavorited) { %>
         <form action="/posts/<%= post._id %>/favorites?_method=DELETE" method="post">
@@ -95,7 +90,6 @@
         </form>
     <% } %>
 
-    <p>Posted by: <%= post.owner.username %></p>
 
     
     </div>
