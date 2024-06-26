@@ -24,11 +24,11 @@
                     <div class="post-container">
                         <a href="/posts/<%= post._id %>">
                             <div class="post-image-container">
-                                <img src="<%= post.images %>" alt="<%= post.city %> image" class="post-image">
-                            <!-- <div class="post-text"> -->
+                                <img src="<%= post.images[0] %>" alt="<%= post.city %> image" class="post-image">
+                            <div class="post-text">
                                     <h4><%= post.city %></h4>
                                     <p><%= post.country %></p>
-                            <!-- </div>   -->
+                            </div>  
                         </div>
                         </a>
                     </div>

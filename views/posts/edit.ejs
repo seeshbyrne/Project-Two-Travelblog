@@ -31,29 +31,34 @@
         <label class="form-label">Accommodation Ideas:</label>
         <div>
             <% post.accommodation.forEach(suggestion => { %>
-                <input class="form-control" name="accommodation" value="<%= suggestion %>">
+                <input class="form-control" name="accommodation" required value="<%= suggestion %>">
             <% }) %>
         </div>
     </div>
 
-        <div class="mb-3">
+    <div class="mb-3">
         <label class="form-label">Food Suggestions:</label>
         <div>
             <% post.food.forEach(suggestion => { %>
-                <input class="form-control" name="food" value="<%= suggestion %>">
+                <input class="form-control" name="food" required value="<%= suggestion %>">
             <% }) %>
         </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Top Tips:</label>
-        <textarea class="form-control" name="tips"></textarea><%= post.tips %></textarea>
+        <div>
+            <% post.tip.forEach(tip => { %>
+                <input class="form-control" name="tip" required value="<%= tip %>">
+            <% }) %>
+        </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Image:</label>
-        <input class="form-control" type="file" name="image">
+        <input class="form-control" type="file" name="image" value="<%= post.images %>">
     </div>
+
         <button>Update Post</button>
     </form>
     </div>

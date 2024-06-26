@@ -44,7 +44,7 @@
         <div class="food-suggestions">
         <h2><strong>Top Places to Eat:</strong></h2>
             <% post.food.forEach(suggestion => { %>
-                <h4><%= suggestion %></h4>
+                <h5><%= suggestion %></h5>
             <% }) %>
             <form action="/posts/<%= post._id %>/food-suggestions" method="post">
                 <textarea name="food" placeholder="Add a food suggestion" required></textarea>
@@ -54,8 +54,8 @@
 
         <div class="tip-suggestions">
             <h2><strong>Top Tips: <%= post.tips %></strong></h2>
-            <% post.tip.forEach(suggestion => { %>
-                <h4><%= suggestion %></h4>
+            <% post.tip.forEach(tip => { %>
+                <h5><%= tip %></h5>
             <% }) %>
             <form action="/posts/<%= post._id %>/top-tips" method="post">
                 <textarea name="tip" placeholder="Add your Top Tip" required></textarea>

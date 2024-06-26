@@ -55,7 +55,7 @@ router.get('/:id', async (req, res) => {
 //upload.array('image', 6) this instead for multiple images
 
 // CREATE 
-router.post('/', upload.single('image'), async (req, res) => {
+router.post('/', upload.array('image', 6), async (req, res) => {
     try {
         if (!req.file) {
             throw new Error("Image file is required");
@@ -89,7 +89,7 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 // UPDATE
-router.put('/:id', async (req, res) => {
+router.put('/:id', upload.single('image'), async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         // Check if the current user owns the post
@@ -141,6 +141,8 @@ router.delete('/:id/favorite', async (req, res) => {
     }
     res.redirect('/posts/' + req.params.id);
 })
+
+
 
 // NEW POST CREATE ROUTE FOR IMAGES
 router.post('/:id/images', upload.array('image', 6), async (req, res) => {
