@@ -15,7 +15,9 @@ const postSchema = new mongoose.Schema({
     food: [{
       type: String
     }],
-    tips: String,
+    tip: [{
+        type: String
+    }],
     favouritedByUsers: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

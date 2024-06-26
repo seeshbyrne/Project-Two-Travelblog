@@ -196,4 +196,18 @@ router.post('/:id/stay-suggestions', async (req, res) => {
     res.redirect('/posts/' + req.params.id);
 });
 
+
+////////////////////////COME BACK TO THIS ///////////////
+//NEW POST CREATE ROUTE FOR TOP TIPS
+router.post('/:id/top-tips', async (req, res) => {
+    try {
+        await Post.findByIdAndUpdate(req.params.id, {
+            $push: { tip: req.body.tip }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+    res.redirect('/posts/' + req.params.id);
+});
+
 module.exports = router;

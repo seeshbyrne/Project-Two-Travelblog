@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700');
-/* can change this font */
 
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Serif+Display:ital@0;1&display=swap');
 
@@ -10,6 +9,8 @@ body {
     background-color: rgb(235, 235, 235);
 }
 
+
+/* /////// FRONT PAGE STUFF /////////////////// */
 .carousel-image {
     height: 400px; /* Set the desired height */
     object-fit: cover; /* This ensures the image covers the container */
@@ -19,7 +20,7 @@ body {
     text-align: center;
 }
 
-.travel-icon {
+/* .travel-icon {
     background-image: url();
     width: 1.4em;
     height: 1.4em;
@@ -27,7 +28,7 @@ body {
     background-size: contain;
     margin: 2px;
     padding-left: 5px;
-}
+} */
 
 .header-container {
     position: relative;
@@ -42,7 +43,6 @@ body {
     border-radius: 5px;
 }
 
-
 .welcome-title > h1 {
     text-align: left;
     font-size: 100px;
@@ -52,6 +52,33 @@ body {
                  2px 2px 6px rgba(128, 128, 128, 0.8);
 }
 
+/* .reviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 20px;
+    padding: 10px;
+    height: 500px;
+} */
+
+.reviews {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-style: italic;
+    line-height: 190%;
+}
+
+.reviews > p {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+/* /////// FRONT PAGE STUFF /////////////////// */
+
+
+
+/* /////// SIGN UP STUFF /////////////////// */
   .signup-page,
 .signin-page {
   display: flex;
@@ -89,46 +116,6 @@ body {
   flex-direction: column;
 }
 
-label {
-  font-size: 0.9em;
-}
-
-input {
-  border: 1px solid rgb(190, 190, 190);
-  border-radius: 10px;
-  margin: 10px 0;
-  width: 15em;
-  padding: 5px;
-}
-
-button {
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  background-color: #274c9c;
-  padding: 7px 15px;
-  margin: 10px 0;
-}
-
-button:hover {
-  background-color: black;
-}
-
-.edit-post-button {
-border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  background-color: #274c9c;
-  padding: 7px;
-  width: 10em;
-  text-align: center;
-}
-
-.edit-post-button > a  {
-  color: white;
-}
-
 .signup-img {
     background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1586&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     min-height: 110vh;
@@ -146,6 +133,55 @@ border: none;
     width: 40%;
     position: relative;
 
+}
+/* /////// SIGN UP STUFF /////////////////// */
+
+
+
+label {
+  font-size: 0.9em;
+}
+
+input {
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 15em;
+  padding: 5px;
+}
+
+button {
+  border: none;
+  font-weight: bold;
+  background-color: rgb(191, 220, 203);
+  padding: 7px 15px;
+  margin: 10px 0;
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(164, 194, 176);
+}
+
+.edit-post-button {
+  border: none;
+  font-weight: bold;
+  background-color: rgb(191, 220, 203);
+  padding: 7px 15px;
+  margin: 10px 0;
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 8em;
+  text-align: center;
+}
+
+.edit-post-button > a  {
+  color: rgb(0, 0, 0);
 }
 
 .search-add {
@@ -180,20 +216,8 @@ border: none;
     color: black;
 }
 
-.reviews {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 20px;
-    padding: 10px;
-    height: 500px;
-}
 
-.reviews > p {
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-}
-
+/* /////// HEADERS //////////////////// */
 .index-header {
     margin: 10px 15px;
 }
@@ -210,11 +234,28 @@ border: none;
     margin: 10px 15px;
 }
 
+.city-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
 
+.country-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 5px;
+}
 
 .post-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     margin: 10px 15px;
 }
+
+
 
 .destination-header {
     margin: 10px 15px;
@@ -223,6 +264,10 @@ border: none;
 .favorites-header {
     margin: 10px 15px;
 }
+/* /////// HEADERS //////////////////// */
+
+
+
 
 .post-content {
     position: relative;
@@ -233,7 +278,7 @@ border: none;
     text-align: center;
     height: 325px;
     position: relative;
-    background-color: pink;
+    /* background-color: pink; */
 }
 
 .post-image-container {
@@ -251,20 +296,23 @@ border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* .post-details {
-    text-align: center;
-} */
-
 
 
 .image-collection {
     display: flex;
     justify-content: center;
-
 }
 
 
-/* ///////////////////////////////////////////////// */
+
+/* //////////////POST PAGE STUFF/////////////// */
+
+.heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+}
 
 .stay-suggestions {
     display: flex;
@@ -276,10 +324,27 @@ border: none;
     width: 80%;
     margin-left: 10%;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .stay-suggestions > h2 {
     margin: 2%;
+}
+
+.stay-suggestions form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Space between suggestions and form */
+}
+
+.stay-suggestions textarea {
+    width: 100%;
+    max-width: 400px; /* Limit width of textarea for better readability */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
 
 .food-suggestions {
@@ -293,10 +358,27 @@ border: none;
     margin-left: 10%;
     margin-top: 2%;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .food-suggestions > h2 {
     margin: 2%;
+}
+
+.food-suggestions form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Space between suggestions and form */
+}
+
+.food-suggestions textarea {
+    width: 100%;
+    max-width: 400px; /* Limit width of textarea for better readability */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
 
 .tip-suggestions {
@@ -310,10 +392,27 @@ border: none;
     margin-left: 10%;
     margin-top: 2%;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .tip-suggestions > h2 {
     margin: 2%;
+}
+
+.tip-suggestions form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Space between suggestions and form */
+}
+
+.tip-suggestions textarea {
+    width: 100%;
+    max-width: 400px; /* Limit width of textarea for better readability */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
 
 .favourite {
@@ -322,7 +421,13 @@ border: none;
     margin: 1%;
 }
 
-/* ///////////////////////////////////////////////// */
+.image-upload {
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+}
+
+/* //////////////POST PAGE STUFF/////////////// */
 
 
 
@@ -348,13 +453,7 @@ border: none;
     transform: translate(-50%, -50%) scale(1.1);
 }
 
-.reviews {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-style: italic;
-    line-height: 190%;
-}
+
 
 .edit-post {
     display: flex;
