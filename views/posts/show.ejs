@@ -16,20 +16,55 @@
         <%= post.city %></h1><h2><%= post.country %></h2>
     </div>
 
+    <div class="image-collection">
     <p>
         <% post.images.forEach(image => { %>
-            <img src="<%= image %>" alt="">
+            <img src="<%= image %>" alt="<%= post.city %>" width="500">
         <% }) %>
     </p>
-    <h4>Posted by: <%= post.owner.username %></h4>
+    </div>
 
-    <p>Best place to stay: <%= post.accommodation %></p>
-    <p>Best place to eat: <%= post.food %></p>
+    <p> 
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22">
+        <%= post.favoritedByUsers.length %>
+        </p>
+
+    <div class="post-details">
+
+        <h4>Places to stay:</h4>
+        <%= post.accommodation %>
+        <div class="stay-suggestions">
+            <% post.staySuggestions.forEach(suggestion => { %>
+                <p><%= suggestion.user.username %> <%= suggestion.suggestion %></p>
+            <% }) %>
+            <form action="/posts/<%= post._id %>/stay-suggestions" method="post">
+                <textarea name="suggestion" placeholder="Suggest a place to stay" required></textarea>
+                <button>Add suggestion</button>
+            </form>
+        </div>
+
+        <h4>Places to eat:</h4>
+        <%= post.food %>    
+        <div class="food-suggestions">
+            <% post.foodSuggestions.forEach(suggestion => { %>
+                <p><%= suggestion.user.username %> <%= suggestion.suggestion %></p>
+            <% }) %>
+            <form action="/posts/<%= post._id %>/food-suggestions" method="post">
+                <textarea name="suggestion" placeholder="Add a food suggestion" required></textarea>
+                <button>Add suggestion</button>
+            </form>
+        </div>
+
+        <h4>Top Tips: <%= post.tips %></h4>
+
+    </div>
+
+    
+
     <p>
-        Add New Image
         <form action="/posts/<%= post._id %>/images" enctype="multipart/form-data" method="post">
             <input type="file" name="image">
-            <button>Upload Image</button>
+            <button>Upload your own Images</button>
         </form>
     </p>
 
@@ -37,7 +72,6 @@
     
     
     <% if (post.owner._id.equals(user._id)) { %>
-        <p>This is your post</p>
         <div class="edit-post-button"><a href="/posts/<%= post._id %>/edit">Edit Post</a></div>
         <form 
             action="/posts/<%= post._id %>?_method=DELETE"
@@ -48,15 +82,24 @@
         <p>Post created by <%= post.owner.username %></p>
     <% } %>
 
-    <p>Favorited by <%= post.favoritedByUsers.length %> users</p>
     <% if (alreadyFavorited) { %>
         <form action="/posts/<%= post._id %>/favorites?_method=DELETE" method="post">
-            <button>Remove from favorites</button>
+            <button> Remove from favorites</button>
         </form>
     <% } else { %>
         <form action="/posts/<%= post._id %>/favorite" method="post">
-            <button>Add to favorites</button>
+            <button>
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22">
+                 Add to favorites
+            </button>
         </form>
     <% } %>
+
+    <p>Posted by: <%= post.owner.username %></p>
+
+    
+    </div>
+
+
 </body>
 </html>

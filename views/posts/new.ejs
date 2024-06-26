@@ -13,30 +13,43 @@
     <div class="new-header">
     <h1>New Post</h1>
     </div>
-    <form action="/posts" enctype="multipart/form-data" method="post">
-        <label>
-            City:
-            <input name="city" required>
-        </label>
-        <label>
-            Country:
-            <input name="country" required>
-        </label>
-        <label>
-            Accommodation:
-            <input name="accommodation">
-        </label>
-        <label>
-            Food:
-            <input name="food">
-        </label>
 
-        <label>
-            Image:
-            <input type="file" name="image">
-        </label>
+    <div class="new-post">
+    <form action="/posts" enctype="multipart/form-data" method="post" class="d-flex flex-column gap-3">
+        
+        <div class="mb-3">
+            <label class="form-label">City:</label>
+            <input class="form-control" name="city" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Country:</label>
+            <input class="form-control" name="country" required>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Accommodation Ideas:</label>
+            <input class="form-control" name="accommodation">
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Food Suggestions:</label>
+            <input class="form-control" name="food">
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Top Tips:</label>
+            <textarea class="form-control" name="tips"></textarea>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Image:</label>
+            <input class="form-control" type="file" name="image">
+        </div>
 
         <button>Add Post</button>
     </form>
+    </div>
+
 </body>
 </html>

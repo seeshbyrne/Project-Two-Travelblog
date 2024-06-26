@@ -36,9 +36,11 @@ router.post('/sign-up', async (req, res) => {
     req.body.password = hashedPassword;
   
     // All ready to create the new user!
-    await User.create(req.body);
-  
-    res.redirect('/auth/sign-in');
+    const user = await User.create(req.body);
+    req.session.user = {
+      username: user.username,
+    };
+    res.redirect('/');
   } catch (error) {
     console.log(error);
     res.redirect('/');
@@ -50,7 +52,10 @@ router.post('/sign-in', async (req, res) => {
     // First, get the user from the database
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (!userInDatabase) {
-      return res.send('Login failed. Please try again.');
+      res.render('authentication/sign-in.ejs', { // instead of username not foung
+        error: 'Username not found'
+    });
+    return;
     }
   
     // There is a user! Time to test their password with bcrypt
@@ -59,18 +64,25 @@ router.post('/sign-in', async (req, res) => {
       userInDatabase.password
     );
     if (!validPassword) {
-      return res.send('Login failed. Please try again.');
+      res.render('authentication/sign-in.ejs', {
+        error: 'Invalid Password'
+        });
+        return;
     }
   
     // There is a user AND they had the correct password. Time to make a session!
     // Avoid storing the password, even in hashed format, in the session
     // If there is other data you want to save to `req.session.user`, do so here!
+    
     req.session.user = {
       username: userInDatabase.username,
       _id: userInDatabase._id
     };
   
-    res.redirect('/');
+    req.session.save(() => {
+      res.redirect('/');
+    });
+
   } catch (error) {
     console.log(error);
     res.redirect('/');

@@ -5,8 +5,6 @@ const upload = require('../middleware/multer');
 
 const Post = require('../models/post');
 
-// ROUTES GO HERE
-
 // INDEX
 router.get('/', async (req, res) => {
     try {
@@ -31,7 +29,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// NEW - This will render a pagfe that displays a form to add a new post to the user's travel posts
+// NEW
 router.get('/new', (req, res) => {
     res.render('posts/new.ejs');
 });
@@ -55,7 +53,7 @@ router.get('/:id', async (req, res) => {
 
 //upload.array('image', 6) this instead for multiple images
 
-// CREATE - This will create new posts in the embedded destination array on the user model
+// CREATE 
 router.post('/', upload.single('image'), async (req, res) => {
     try {
         if (!req.file) {
@@ -91,15 +89,53 @@ router.get('/:id/edit', async (req, res) => {
 // UPDATE
 router.put('/:id', async (req, res) => {
     try {
+
+        console.log('Request body:', req.body); ///////////////////////////////////////
+
         const post = await Post.findById(req.params.id);
+
+        // Check if the current user owns the post
         if (post.owner.equals(req.session.user._id)) {
-            await post.updateOne(req.body);
-        }
+            // Update main post fields
+            post.city = req.body.city;
+            post.country = req.body.country;
+            post.accommodation = req.body.accommodation;
+            post.food = req.body.food;
+            post.tips = req.body.tips;
+
+            ///await post . update One ( req . body ) ; GOES HERE
+            console.log('Post before update:', post); /////////////////////////////////////////////
+
+        // Update stay suggestions
+        if (req.body.staySuggestions) {
+            for (let [id, suggestion] of Object.entries(req.body.staySuggestions)) {
+                let staySuggestion = post.staySuggestions.id(id);
+                if (staySuggestion) {
+                    staySuggestion.suggestion = suggestion;
+                };
+            };
+        };
+
+         // Update food suggestions
+         if (req.body.foodSuggestions) {
+            for (let [id, suggestion] of Object.entries(req.body.foodSuggestions)) {
+                let foodSuggestion = post.foodSuggestions.id(id);
+                if (foodSuggestion) {
+                    foodSuggestion.suggestion = suggestion;
+                };
+            };
+        };
+
+    }
+        console.log('Post after update:', post);
+
+        await post.save();
         res.redirect('/posts/' + post._id);
+    
     } catch (error) {
         console.log(error);
         res.redirect('/posts');
-    }
+    };
 });
 
 // DELETE
@@ -141,7 +177,7 @@ router.delete('/:id/favorites', async (req, res) => {
     res.redirect('/posts/' + req.params.id);
 })
 
-
+// NEW POST CREATE ROUTE FOR IMAGES
 router.post('/:id/images', upload.array('image', 6), async (req, res) => {
     try {
         if (!req.files || req.files.length === 0) {
@@ -169,6 +205,40 @@ router.post('/:id/images', upload.array('image', 6), async (req, res) => {
         console.log(error);
     }
     res.redirect('/posts/' + req.params.id);
-})
+});
+
+//NEW POST CREATE ROUTE FOR FOOD SUGGESTIONS
+router.post('/:id/food-suggestions', async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (post) {
+            post.foodSuggestions.push({
+                user: req.session.user._id,
+                suggestion: req.body.suggestion
+            });
+            await post.save();
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    res.redirect('/posts/' + req.params.id);
+});
+
+//NEW POST CREATE ROUTE FOR ACCOMMODATION SUGGESTIONS
+router.post('/:id/stay-suggestions', async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (post) {
+            post.staySuggestions.push({
+                user: req.session.user._id,
+                suggestion: req.body.suggestion
+            });
+            await post.save();
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    res.redirect('/posts/' + req.params.id);
+});
 
 module.exports = router;

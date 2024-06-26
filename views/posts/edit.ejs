@@ -13,25 +13,54 @@
     <div class="edit-header">
     <h1>Edit Post</h1>
     </div>
-    <form action="/posts/<%= post._id %>?_method=PUT" method="post">
-        <label>
-            City:
-            <input name="city" required value="<%= post.city %>">
-        </label>
-        <label>
-            Country:
-            <input name="country" required value="<%= post.country %>">
-        </label>
-        <label>
-            Accommodation:
-            <input name="accommodation" value="<%= post.accommodation %>">
-        </label>
-        <label>
-            Food:
-            <input name="food" value="<%= post.food %>">
-        </label>
 
+    <div class="edit-post">
+    <form action="/posts/<%= post._id %>?_method=PUT" method="post" class="d-flex flex-column gap-3">
+
+        <div class="mb-3">
+            <label class="form-label">City:</label>
+            <input class="form-control" name="city" required value="<%= post.city %>">
+        </div>
+
+        <div class="mb-3">
+        <label class="form-label">Country:</label>
+            <input class="form-control" name="country" required value="<%= post.country %>">
+        </div>
+
+        <div class="mb-3">
+        <label class="form-label">Accommodation Ideas:</label>
+            <input class="form-control" name="accommodation" value="<%= post.accommodation %>">
+        <div>
+            <% post.staySuggestions.forEach(suggestion => { %>
+                <%= suggestion.user.username %> 
+                <input class="form-control" name="staySuggestions[<%= suggestion._id %>]" value="<%= suggestion.suggestion %>">
+            <% }) %>
+        </div>
+    </div>
+
+        <div class="mb-3">
+        <label class="form-label">Food Suggestions:</label>
+            <input class="form-control" name="food" value="<%= post.food %>">
+        <div>
+            <% post.foodSuggestions.forEach(suggestion => { %>
+                <%= suggestion.user.username %> 
+                <input class="form-control" name="foodSuggestions[<%= suggestion._id %>]" value="<%= suggestion.suggestion %>">
+            <% }) %>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Top Tips:</label>
+        <textarea class="form-control" name="tips"><%= post.tips %></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Image:</label>
+        <input class="form-control" type="file" name="image">
+    </div>
         <button>Update Post</button>
     </form>
+    </div>
+
 </body>
 </html>
