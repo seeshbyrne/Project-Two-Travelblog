@@ -19,7 +19,7 @@
     <div class="image-collection">
     <p>
         <% post.images.forEach(image => { %>
-            <img src="<%= image %>" alt="<%= post.city %>" width="500">
+            <img src="<%= image %>" alt="<%= post.city %>" height="500">
         <% }) %>
     </p>
     </div>
@@ -27,12 +27,12 @@
     <p> 
         <img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22">
         <%= post.favoritedByUsers.length %>
-        </p>
+    </p>
 
     <div class="post-details">
 
-        <h4>Places to stay:</h4>
         <div class="stay-suggestions">
+        <h2><strong>Top Places to Stay:</strong></h2>
             <% post.accommodation.forEach(suggestion => { %>
                 <p><%= suggestion %></p>
             <% }) %>
@@ -42,8 +42,8 @@
             </form>
         </div>
 
-        <h4>Places to eat:</h4>
         <div class="food-suggestions">
+        <h2><strong>Top Places to Eat:</strong></h2>
             <% post.food.forEach(suggestion => { %>
                 <p><%= suggestion %></p>
             <% }) %>
@@ -53,11 +53,24 @@
             </form>
         </div>
 
-        <h4>Top Tips: <%= post.tips %></h4>
+        <div class="tip-suggestions">
+            <h2><strong>Top Tips: <%= post.tips %></strong></h2>
+        </div>
 
+    <div class="favourite">
+    <% if (alreadyFavorited) { %>
+        <form action="/posts/<%= post._id %>/favorite?_method=DELETE" method="post">
+            <button> Remove from favorites</button>
+        </form>
+    <% } else { %>
+        <form action="/posts/<%= post._id %>/favorite" method="post">
+            <button>
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22">
+                Add to favorites
+            </button>
+        </form>
+    <% } %>
     </div>
-
-    
 
     <p>
         <form action="/posts/<%= post._id %>/images" enctype="multipart/form-data" method="post">
@@ -66,33 +79,23 @@
         </form>
     </p>
 
-    
-    
-    
 
-        <div class="edit-post-button"><a href="/posts/<%= post._id %>/edit">Edit Post</a></div>
-        <form 
-            action="/posts/<%= post._id %>?_method=DELETE"
-            method="post">
-        <button>Delete Post</button>
-        </form>
-
-    <% if (alreadyFavorited) { %>
-        <form action="/posts/<%= post._id %>/favorites?_method=DELETE" method="post">
-            <button> Remove from favorites</button>
-        </form>
-    <% } else { %>
-        <form action="/posts/<%= post._id %>/favorite" method="post">
-            <button>
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22">
-                 Add to favorites
-            </button>
-        </form>
-    <% } %>
-
-
-    
+<% if (isOwner) { %>
+    <div class="edit-post-button">
+        <a href="/posts/<%= post._id %>/edit">Edit Post</a>
     </div>
+
+    <form action="/posts/<%= post._id %>?_method=DELETE"
+        method="post">
+        <button>Delete Post</button>
+    </form>
+<% } %>
+
+    
+
+    </div>
+</div>
+
 
 
 </body>

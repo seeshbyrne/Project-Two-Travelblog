@@ -20,15 +20,15 @@
     </div>
         <div class="row" >
             <% posts.forEach((post) => { %>
-                <div class="col-md-3 mb-4" id="post-box">
+                <div class="col-md-4 mb-4" id="post-box">
                     <div class="post-container">
                         <a href="/posts/<%= post._id %>">
                             <div class="post-image-container">
                                 <img src="<%= post.images %>" alt="<%= post.city %> image" class="post-image">
-                                <div class="post-text">
+                            <!-- <div class="post-text"> -->
                                     <h4><%= post.city %></h4>
                                     <p><%= post.country %></p>
-                            </div>  
+                            <!-- </div>   -->
                         </div>
                         </a>
                     </div>

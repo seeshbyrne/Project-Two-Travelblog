@@ -11,15 +11,17 @@
 <body>
   <%- include('partials/_navbar.ejs') %>
   
+  <div class="header-container">
     <div class="welcome-title">
       <% if (user) { %>
-        <h1>Welcome to the travel blog <%= user.username %>! </h1>
+        <h1>Welcome to TravelBug </h1>
       <% } else { %>
-        <h1>Welcome to the travel blog!</h1>
+        <h1>Welcome to TravelBug</h1>
       <% } %>
     </div>
-    
     <img src="https://images.unsplash.com/photo-1603808523691-a2f471d415f0?q=80&w=1195&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+  </div>
+    
     <div class="container">
     <div class="reviews">
       <p>"A treasure trove of travel inspiration! [Travel Blog's Name] blends vivid storytelling with breathtaking photography, making every article a virtual journey. Perfect for armchair travelers and adventurers alike."</p>

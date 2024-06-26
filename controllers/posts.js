@@ -38,13 +38,13 @@ router.get('/new', (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const post = await Post.findById(req.params.id).populate('owner');
-        //console.log(post);
-
         const alreadyFavorited = post.favoritedByUsers.some((userId) => userId.equals(req.session.user._id));
+        const isOwner = post.owner.equals(req.session.user._id);
         
         res.render('posts/show.ejs', {
             post: post,
-            alreadyFavorited: alreadyFavorited
+            alreadyFavorited: alreadyFavorited,
+            isOwner: isOwner
         });
     } catch (error) {
         console.log(error);
@@ -131,7 +131,7 @@ router.post('/:id/favorite', async (req, res) => {
 });
 
 // DELETE FAVOURITES
-router.delete('/:id/favorites', async (req, res) => {
+router.delete('/:id/favorite', async (req, res) => {
     try {
         await Post.findByIdAndUpdate(req.params.id, {
             $pull: { favoritedByUsers: req.session.user._id }
