@@ -32,7 +32,6 @@
             <input class="form-control" name="accommodation" value="<%= post.accommodation %>">
         <div>
             <% post.staySuggestions.forEach(suggestion => { %>
-                <%= suggestion.user.username %> 
                 <input class="form-control" name="staySuggestions[<%= suggestion._id %>]" value="<%= suggestion.suggestion %>">
             <% }) %>
         </div>
@@ -43,7 +42,6 @@
             <input class="form-control" name="food" value="<%= post.food %>">
         <div>
             <% post.foodSuggestions.forEach(suggestion => { %>
-                <%= suggestion.user.username %> 
                 <input class="form-control" name="foodSuggestions[<%= suggestion._id %>]" value="<%= suggestion.suggestion %>">
             <% }) %>
         </div>

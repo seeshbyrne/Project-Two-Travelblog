@@ -89,49 +89,13 @@ router.get('/:id/edit', async (req, res) => {
 // UPDATE
 router.put('/:id', async (req, res) => {
     try {
-
-        console.log('Request body:', req.body); ///////////////////////////////////////
-
         const post = await Post.findById(req.params.id);
-
         // Check if the current user owns the post
         if (post.owner.equals(req.session.user._id)) {
-            // Update main post fields
-            post.city = req.body.city;
-            post.country = req.body.country;
-            post.accommodation = req.body.accommodation;
-            post.food = req.body.food;
-            post.tips = req.body.tips;
-
-            ///await post . update One ( req . body ) ; GOES HERE
-            console.log('Post before update:', post); /////////////////////////////////////////////
-
-        // Update stay suggestions
-        if (req.body.staySuggestions) {
-            for (let [id, suggestion] of Object.entries(req.body.staySuggestions)) {
-                let staySuggestion = post.staySuggestions.id(id);
-                if (staySuggestion) {
-                    staySuggestion.suggestion = suggestion;
-                };
-            };
-        };
-
-         // Update food suggestions
-         if (req.body.foodSuggestions) {
-            for (let [id, suggestion] of Object.entries(req.body.foodSuggestions)) {
-                let foodSuggestion = post.foodSuggestions.id(id);
-                if (foodSuggestion) {
-                    foodSuggestion.suggestion = suggestion;
-                };
-            };
-        };
-
-    }
-        console.log('Post after update:', post);
-
-        await post.save();
+            console.log(req.body);
+            await post.updateOne(req.body);
+        }
         res.redirect('/posts/' + post._id);
-    
     } catch (error) {
         console.log(error);
         res.redirect('/posts');
