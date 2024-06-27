@@ -11,11 +11,10 @@ body {
     background-color: rgb(235, 235, 235);
 }
 
-
-/* /////// FRONT PAGE STUFF /////////////////// */
+ /* FRONT PAGE */
 .carousel-image {
-    height: 400px; /* Set the desired height */
-    object-fit: cover; /* This ensures the image covers the container */
+    height: 400px;
+    object-fit: cover;
   }
 
 .detail-link > a {
@@ -25,7 +24,6 @@ body {
 .header-container {
     position: relative;
     text-align: right;
-
 }
 
 .welcome-title {
@@ -49,23 +47,15 @@ body {
 
 @media (max-width: 850px) {
     .welcome-title > h1 {
-        font-size: 70px; /* Adjust the font size for smaller screens */
+        font-size: 70px;
     }
 }
 
 @media (max-width: 600px) {
     .welcome-title > h1 {
-        font-size: 50px; /* Further adjust for even smaller screens */
+        font-size: 50px;
     }
 }
-
-/* .reviews {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 20px;
-    padding: 10px;
-    height: 500px;
-} */
 
 .reviews {
     display: flex;
@@ -80,13 +70,11 @@ body {
     margin: 10px;
     text-align: center;
 }
-
-/* /////// FRONT PAGE STUFF /////////////////// */
-
+/* FRONT PAGE */
 
 
-/* /////// SIGN UP STUFF /////////////////// */
 
+/* SIGN UP */
   .signup-page,
 .signin-page {
   display: flex;
@@ -111,20 +99,17 @@ body {
         width: 80%;
         margin: 20px 10px;
     }
-
     .signup-img,
     .signin-img {
-        width: 100%; /* Adjust width to take full width on smaller screens */
+        width: 100%;
     }
-
     .signup-img {
         order: 2;
         margin: 15px 0px 30px 0px;
     }
-
     .signup-page,
     .signin-page {
-        flex-direction: column; /* Stack items vertically on smaller screens */
+        flex-direction: column;
     }
 }
 
@@ -133,8 +118,6 @@ body {
   padding: 20px 40px 25px;
   border: 1px solid gray;
 }
-
-
 
 .signup-form-container-2 > h1,
 .signin-form-container-2 > h1 {
@@ -178,9 +161,8 @@ body {
         margin-top: 25px;
     }
 }
+/* SIGN UP */
 
-
-/* /////// SIGN UP STUFF /////////////////// */
 
 label {
   font-size: 1.1em;
@@ -221,7 +203,7 @@ button {
     color: rgb(0, 0, 0);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    white-space: nowrap; /* Prevent button text from wrapping */
+    white-space: nowrap;
 }
 
 .edit-post-button > a  {
@@ -268,18 +250,8 @@ button:hover {
     margin: 10px;
 }
 
-.new-post-button:hover {
-    background-color: rgb(164, 194, 176);
-}
 
-.new-post-button > a {
-    text-decoration: none;
-    font-weight: bold;
-    color: black;
-}
-
-
-/* /////// HEADERS //////////////////// */
+/* HEADERS */
 .main-page-header {
     display: flex;
     align-items: center;
@@ -317,6 +289,16 @@ button:hover {
   width: 10em;
 }
 
+.new-post-button:hover {
+    background-color: rgb(164, 194, 176);
+}
+
+.new-post-button > a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
 .edit-header {
     margin: 10px 15px;
 }
@@ -335,6 +317,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     font-size: 60px;
+    text-decoration: none;
 }
 
 .country-header > h2 {
@@ -407,15 +390,13 @@ button:hover {
     align-items: center;
     margin-top: 7px;
 }
-
-/* /////// HEADERS //////////////////// */
-
+/* HEADERS */
 
 
 
 
-/* //////////// MAIN PAGE /////////////////// */
 
+/* MAIN PAGE */
 .post-content {
     position: relative;
     text-decoration: none;
@@ -429,7 +410,11 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    text-decoration: none;
+    text-decoration-style: none;
+}
+
+.post-container > a {
+    color: solid white;
 }
 
 .row {
@@ -504,16 +489,12 @@ button:hover {
 
 .post-text > p {
     font-size: 150%;
+    text-decoration: none;
 }
-
-/* //////////// MAIN PAGE /////////////////// */
-
+/* MAIN PAGE */
 
 
-
-
-/* //////////////POST PAGE STUFF/////////////// */
-
+/* POST PAGE */
 .heart {
     display: flex;
     justify-content: center;
@@ -548,12 +529,12 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Space between suggestions and form */
+    margin-top: 20px;
 }
 
 .stay-suggestions textarea {
     width: 100%;
-    max-width: 400px; /* Limit width of textarea for better readability */
+    max-width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -588,19 +569,17 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Space between suggestions and form */
+    margin-top: 20px;
 }
 
 .food-suggestions textarea {
     width: 100%;
-    max-width: 400px; /* Limit width of textarea for better readability */
+    max-width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
     margin-bottom: 10px;
 }
-
-
 
 .tip-suggestions {
     display: flex;
@@ -630,12 +609,12 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Space between suggestions and form */
+    margin-top: 20px;
 }
 
 .tip-suggestions textarea {
     width: 100%;
-    max-width: 400px; /* Limit width of textarea for better readability */
+    max-width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -679,6 +658,7 @@ button:hover {
     .food-suggestions > h5 {
         font-size: 16px;
         margin-top: 10px;
+        word-wrap: break-word;
     }
     .stay-suggestions form,
     .tip-suggestions form,
@@ -699,9 +679,6 @@ button:hover {
         margin-bottom: 10px;
         word-wrap: break-word;
     }
-}
-
-@media (max-width: 750px) {
     .edit-delete-container {
         flex-wrap: wrap;
         flex-direction: column;
@@ -713,6 +690,11 @@ button:hover {
         align-items: center;
         margin: 20px 0; 
     }
+    .index-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
-/* //////////////POST PAGE STUFF/////////////// */
+/* POST PAGE */
 
