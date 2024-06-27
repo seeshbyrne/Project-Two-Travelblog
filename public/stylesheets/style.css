@@ -301,6 +301,15 @@ button:hover {
 
 .edit-header {
     margin: 10px 15px;
+    font-family: "Caveat", cursive;
+    font-style: normal;
+}
+
+.edit-header > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
 }
 
 .new-header {
@@ -308,7 +317,24 @@ button:hover {
 }
 
 .profile-header {
-    margin: 10px 45px;
+    margin: 10px 15px;
+    font-family: "Caveat", cursive;
+    font-style: normal;
+    margin: 10px 45px 0px 0px;
+}
+
+.profile-header > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+}
+
+.profile-separator {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 20px 0;
 }
 
 .city-header > h1 {
@@ -368,8 +394,8 @@ button:hover {
     font-style: normal;
 }
 
-.destination-header > h1 {
-    font-size: 60px;
+.destination-header > h2 {
+    font-size: 50px;
 }
 
 .favorites-header {
@@ -379,7 +405,7 @@ button:hover {
     font-style: normal;
 }
 
-.favorites-header > h1 {
+.favorites-header > h2 {
     margin-left: 15px;
     font-size: 50px;
 }
@@ -646,6 +672,10 @@ button:hover {
     margin: 20px;
 }
 
+.nav-item {
+    font-size: 25px;
+}
+
 @media (max-width: 750px) {
     .stay-suggestions > h2,
     .tip-suggestions > h2,
@@ -659,6 +689,7 @@ button:hover {
         font-size: 16px;
         margin-top: 10px;
         word-wrap: break-word;
+        width: 80%;
     }
     .stay-suggestions form,
     .tip-suggestions form,
@@ -671,7 +702,7 @@ button:hover {
     .stay-suggestions textarea,
     .tip-suggestions textarea,
     .food-suggestions textarea {
-        width: 100%;
+        width: 80%;
         max-width: 400px;
         padding: 10px;
         border: 1px solid #ccc;
@@ -695,6 +726,21 @@ button:hover {
         align-items: center;
         text-align: center;
     }
+    .edit-header > h1 {
+        font-size: 40px;
+    }
+    .nav-item {
+        font-size: 18px;
+    }
 }
+
+.post-container > a {
+    text-decoration: none;
+}
+
 /* POST PAGE */
+
+
+
+
 

@@ -11,8 +11,9 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <div class="profile-header"><h1>Profile</h1></div>
+    <hr class="profile-separator">
     <div class="destination-header">
-        <h1>My Destinations</h1>
+        <h2>My Destinations</h2>
     </div>    
         <div class="row my-destinations">
             <% myPosts.forEach((post) => { %>
@@ -34,7 +35,7 @@
 
 <div class="favorites-header">
     <p><img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22"></p>  
-    <h1>Favourites</h1>
+    <h2>Favourites</h2>
 </div>
 
 <div class="row my-favorites">
