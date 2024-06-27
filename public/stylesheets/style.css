@@ -53,6 +53,18 @@ body {
                  2px 2px 6px rgba(128, 128, 128, 0.8);
 }
 
+@media (max-width: 850px) {
+    .welcome-title > h1 {
+        font-size: 70px; /* Adjust the font size for smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .welcome-title > h1 {
+        font-size: 50px; /* Further adjust for even smaller screens */
+    }
+}
+
 /* .reviews {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -337,7 +349,20 @@ button:hover {
 .image-collection {
     display: flex;
     justify-content: center;
-    text-decoration: none;
+}
+
+.image-collection > img {
+    margin: 5px;
+}
+
+@media (width <= 850px) {
+    .image-collection {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 20px;
+        align-items: center;
+    }
 }
 
 .post-text {
@@ -397,6 +422,11 @@ button:hover {
     margin: 2%;
 }
 
+.stay-suggestions > h5 {
+    margin: 2% 5%;
+}
+
+
 .stay-suggestions form {
     display: flex;
     flex-direction: column;
@@ -431,6 +461,11 @@ button:hover {
     margin: 2%;
 }
 
+.food-suggestions > h5 {
+    margin: 2% 5%;
+}
+
+
 .food-suggestions form {
     display: flex;
     flex-direction: column;
@@ -459,11 +494,18 @@ button:hover {
     margin-top: 2%;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 .tip-suggestions > h2 {
     margin: 2%;
 }
+
+.tip-suggestions > h5 {
+    margin: 2% 5%;
+}
+
+
 
 .tip-suggestions form {
     display: flex;
