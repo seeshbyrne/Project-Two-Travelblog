@@ -689,7 +689,7 @@ button:hover {
         font-size: 16px;
         margin-top: 10px;
         word-wrap: break-word;
-        width: 80%;
+        width: 90%;
     }
     .stay-suggestions form,
     .tip-suggestions form,
@@ -702,7 +702,7 @@ button:hover {
     .stay-suggestions textarea,
     .tip-suggestions textarea,
     .food-suggestions textarea {
-        width: 80%;
+        width: 90%;
         max-width: 400px;
         padding: 10px;
         border: 1px solid #ccc;
@@ -715,12 +715,15 @@ button:hover {
         flex-direction: column;
         justify-content: center;
     }
-    .image-upload {
+
+    .image-upload > form {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         align-items: center;
         margin: 20px 0; 
     }
+
     .index-header {
         flex-direction: column;
         align-items: center;
