@@ -210,24 +210,56 @@ button:hover {
   background-color: rgb(164, 194, 176);
 }
 
-.edit-post-button {
-  border: none;
-  font-weight: bold;
-  background-color: rgb(191, 220, 203);
-  padding: 7px 15px;
-  margin: 10px 0;
-  border-radius: 20px;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 8em;
-  text-align: center;
+.edit-post-button > a,
+button {
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(191, 220, 203);
+    padding: 7px 15px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Prevent button text from wrapping */
 }
 
 .edit-post-button > a  {
     text-decoration: none;
     font-weight: bold;
     color: black;
+}
+
+.edit-delete-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.edit-post-button,
+.edit-post-button > a,
+form,
+.favourite {
+    margin: 0 10px;
+}
+
+.favourite {
+    display: flex;
+    align-items: center;
+}
+
+.favourite button:hover {
+    text-decoration: underline;
+}
+
+.favourite img {
+    margin-right: 5px;
+}
+
+.edit-post-button > a:hover,
+button:hover {
+    background-color: rgb(164, 194, 176);
 }
 
 .search-add {
@@ -322,6 +354,24 @@ button:hover {
     margin: 10px 15px;
     font-family: "Caveat", cursive;
     font-style: normal;
+}
+
+@media (max-width: 850px) {
+    .city-header > h1 {
+        font-size: 50px; /* Adjust the font size for smaller screens */
+    }
+    .country-header > h2 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .city-header > h1 {
+        font-size: 40px; /* Further adjust for even smaller screens */
+    }
+    .country-header > h2 {
+        font-size: 30px;
+    }
 }
 
 .post-header > img {
@@ -509,10 +559,12 @@ button:hover {
 
 .stay-suggestions > h2 {
     margin: 2%;
+    text-align: center;
 }
 
 .stay-suggestions > h5 {
     margin: 2% 5%;
+    text-align: center;
 }
 
 .stay-suggestions form {
@@ -531,6 +583,20 @@ button:hover {
     margin-bottom: 10px;
 }
 
+@media (max-width: 750px) {
+    .stay-suggestions > h2 {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+    .stay-suggestions > h5 {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    .stay-suggestions form {
+        margin: 3%;
+    }
+}
+
 .food-suggestions {
     display: flex;
     justify-content: center;
@@ -547,12 +613,13 @@ button:hover {
 
 .food-suggestions > h2 {
     margin: 2%;
+    text-align: center;
 }
 
 .food-suggestions > h5 {
     margin: 2% 5%;
+    text-align: center;
 }
-
 
 .food-suggestions form {
     display: flex;
@@ -568,6 +635,20 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 6px;
     margin-bottom: 10px;
+}
+
+@media (max-width: 750px) {
+    .food-suggestions > h2 {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+    .food-suggestions > h5 {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    .food-suggestions form {
+        margin: 3%;
+    }
 }
 
 .tip-suggestions {
@@ -586,11 +667,15 @@ button:hover {
 
 .tip-suggestions > h2 {
     margin: 2%;
+    text-align: center;
 }
 
 .tip-suggestions > h5 {
     margin: 2% 5%;
+    text-align: center;
 }
+
+
 
 .tip-suggestions form {
     display: flex;
@@ -606,6 +691,20 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 6px;
     margin-bottom: 10px;
+}
+
+@media (max-width: 750px) {
+    .tip-suggestions > h2 {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+    .tip-suggestions > h5 {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    .tip-suggestions form {
+        margin: 3%;
+    }
 }
 
 .favourite {
