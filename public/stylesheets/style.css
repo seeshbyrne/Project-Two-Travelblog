@@ -410,6 +410,7 @@ button:hover {
     @media (max-width: 850px) and (max-width: 500px) {
         .image-collection > img {
             width: 100%;
+            height: auto;
         }
     }
 }
