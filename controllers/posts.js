@@ -52,8 +52,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-//upload.array('image', 6) this instead for multiple images
-
 // CREATE 
 router.post('/', upload.array('image', 6), async (req, res) => {
     try {
@@ -63,6 +61,7 @@ router.post('/', upload.array('image', 6), async (req, res) => {
         const imageResult = await cloudinary.uploader.upload(req.file.path);
 
         req.body.owner = req.session.user._id;
+
         req.body.images = imageResult.secure_url;
         req.body.cloudinary_id = imageResult.public_id;
 
@@ -95,6 +94,7 @@ router.put('/:id', upload.single('image'), async (req, res) => {
         // Check if the current user owns the post
         if (post.owner.equals(req.session.user._id)) {
         await post.updateOne(req.body);
+
         }
         res.redirect('/posts/' + post._id);
      } catch (error) {
@@ -116,7 +116,6 @@ router.delete('/:id', async (req, res,) => {
     }
     res.redirect('/posts');
 });
-
 
 // FAVOURITES
 router.post('/:id/favorite', async (req, res) => {
@@ -141,8 +140,6 @@ router.delete('/:id/favorite', async (req, res) => {
     }
     res.redirect('/posts/' + req.params.id);
 })
-
-
 
 // NEW POST CREATE ROUTE FOR IMAGES
 router.post('/:id/images', upload.array('image', 6), async (req, res) => {
@@ -198,8 +195,6 @@ router.post('/:id/stay-suggestions', async (req, res) => {
     res.redirect('/posts/' + req.params.id);
 });
 
-
-////////////////////////COME BACK TO THIS ///////////////
 //NEW POST CREATE ROUTE FOR TOP TIPS
 router.post('/:id/top-tips', async (req, res) => {
     try {

@@ -192,8 +192,15 @@ button:hover {
   background-color: rgb(164, 194, 176);
 }
 
-.edit-post-button > a,
-button {
+/* ///////////////////DO I NEED THIS??? */
+.update-edit-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ///////////////////DO I NEED THIS??? */
+
+.edit-post-button > a {
     border: none;
     border-radius: 20px;
     font-weight: bold;
@@ -204,12 +211,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
     white-space: nowrap;
-}
-
-.edit-post-button > a  {
     text-decoration: none;
-    font-weight: bold;
-    color: black;
 }
 
 .edit-delete-container {
@@ -223,24 +225,21 @@ button {
 .edit-post-button > a,
 form,
 .favourite {
-    margin: 0 10px;
+    margin: 0px 10px;
 }
-
 .favourite {
     display: flex;
     align-items: center;
 }
-
 .favourite button:hover {
     text-decoration: underline;
 }
-
 .favourite img {
     margin-right: 5px;
 }
 
-.edit-post-button > a:hover,
-button:hover {
+
+.edit-post-button > a:hover {
     background-color: rgb(164, 194, 176);
 }
 
@@ -660,6 +659,11 @@ button:hover {
     margin: 1%;
 }
 
+
+
+/* GOES HERE /////////////////////////////////////////////////// */
+
+
 .edit-post {
     display: flex;
     justify-content: center;
@@ -676,7 +680,13 @@ button:hover {
     font-size: 25px;
 }
 
-@media (max-width: 750px) {
+.update-button {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 800px) {
     .stay-suggestions > h2,
     .tip-suggestions > h2,
     .food-suggestions > h2 {
