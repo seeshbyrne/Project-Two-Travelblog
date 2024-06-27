@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Serif+Display:ital@0;1&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Playwrite+AU+NSW:wght@100..400&display=swap');
+
 body {
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -20,16 +22,6 @@ body {
     text-align: center;
 }
 
-/* .travel-icon {
-    background-image: url();
-    width: 1.4em;
-    height: 1.4em;
-    background-repeat: no-repeat;
-    background-size: contain;
-    margin: 2px;
-    padding-left: 5px;
-} */
-
 .header-container {
     position: relative;
     text-align: right;
@@ -42,6 +34,8 @@ body {
     top: 10px;
     padding: 10px;
     border-radius: 5px;
+    font-family: "Caveat", cursive;
+    font-style: normal;
 }
 
 .welcome-title > h1 {
@@ -188,8 +182,6 @@ body {
 
 /* /////// SIGN UP STUFF /////////////////// */
 
-
-
 label {
   font-size: 1.1em;
 }
@@ -244,20 +236,6 @@ button:hover {
     margin: 10px;
 }
 
-.new-post-button {
-    border: none;
-  font-weight: bold;
-  background-color: rgb(191, 220, 203);
-  padding: 7px 15px;
-  margin: 10px 0;
-  border-radius: 20px;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 8em;
-  text-align: center;
-}
-
 .new-post-button:hover {
     background-color: rgb(164, 194, 176);
 }
@@ -270,9 +248,41 @@ button:hover {
 
 
 /* /////// HEADERS //////////////////// */
+.main-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0px 20px 0px;
+}
 
 .index-header {
-    margin: 10px 15px;
+    flex-grow: 1;
+    text-align: center;
+    position: absolute;
+    font-family: "Caveat", cursive;
+    font-style: normal;
+}
+
+.index-header > h1 {
+    font-size: 60px;
+}
+
+.new-post-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-weight: bold;
+  background-color: rgb(191, 220, 203);
+  padding: 7px;
+  height: 2.5em;
+  margin-left: auto;
+  margin-right: 50px;
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 10em;
 }
 
 .edit-header {
@@ -284,44 +294,69 @@ button:hover {
 }
 
 .profile-header {
-    margin: 10px 15px;
+    margin: 10px 45px;
 }
 
-.city-header {
+.city-header > h1 {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
+    font-size: 60px;
 }
 
-.country-header {
+.country-header > h2 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin-left: 10px;
     margin-top: 5px;
+    font-size: 50px;
 }
 
 .post-header {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     margin: 10px 15px;
+    font-family: "Caveat", cursive;
+    font-style: normal;
+}
+
+.post-header > img {
+    margin-bottom: 10px;
 }
 
 .destination-header {
     display: flex;
     justify-content: center;
+    font-family: "Caveat", cursive;
+    font-style: normal;
+}
+
+.destination-header > h1 {
+    font-size: 60px;
 }
 
 .favorites-header {
     display: flex;
     justify-content: center;
+    font-family: "Caveat", cursive;
+    font-style: normal;
 }
 
-.favorites-header > h2 {
+.favorites-header > h1 {
     margin-left: 15px;
+    font-size: 50px;
 }
 
+.favorites-header > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7px;
+}
 
 /* /////// HEADERS //////////////////// */
 
@@ -337,7 +372,6 @@ button:hover {
 }
 
 .post-container {
-
     background-color: white;
     padding: 15px;
     height: 545px;
@@ -362,10 +396,9 @@ button:hover {
 }
 
 .post-image-container {
-
     position: relative;
     width: 100%;
-    height: 450px;
+    height: 425px;
     margin-bottom: 10px;
     text-decoration: none;
 
@@ -419,9 +452,9 @@ button:hover {
     color: rgb(0, 0, 0);
     border-radius: 5px;
     text-align: left;
-    margin-top: 10px;
     text-decoration: none;
-
+    font-family: "Caveat", cursive;
+    font-style: normal;
 
     /* position: absolute;
     color: rgb(0, 0, 0);
@@ -436,8 +469,14 @@ button:hover {
 }
 
 .post-text > h4 {
+    margin-top: 10px;
     text-decoration: none;
     color: inherit;
+    font-size: 200%;
+}
+
+.post-text > p {
+    font-size: 150%;
 }
 
 /* //////////// MAIN PAGE /////////////////// */
@@ -475,7 +514,6 @@ button:hover {
 .stay-suggestions > h5 {
     margin: 2% 5%;
 }
-
 
 .stay-suggestions form {
     display: flex;
@@ -544,7 +582,6 @@ button:hover {
     margin-top: 2%;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
 }
 
 .tip-suggestions > h2 {
@@ -554,8 +591,6 @@ button:hover {
 .tip-suggestions > h5 {
     margin: 2% 5%;
 }
-
-
 
 .tip-suggestions form {
     display: flex;
