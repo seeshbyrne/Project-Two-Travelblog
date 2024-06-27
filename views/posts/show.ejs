@@ -63,11 +63,11 @@
             </form>
         </div>
 
-<div class="image-upload">
-        <p><form action="/posts/<%= post._id %>/images" enctype="multipart/form-data" method="post">
+    <div class="image-upload">
+        <form action="/posts/<%= post._id %>/images" enctype="multipart/form-data" method="post">
             <input type="file" name="image">
             <button>Upload your own Images</button>
-        </form></p>
+        </form>
     </div>
 
 <div class="edit-delete-container">
