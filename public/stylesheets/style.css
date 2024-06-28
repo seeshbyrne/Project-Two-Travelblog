@@ -15,7 +15,7 @@ body {
 .carousel-image {
     height: 400px;
     object-fit: cover;
-  }
+}
 
 .detail-link > a {
     text-align: center;
@@ -192,13 +192,11 @@ button:hover {
   background-color: rgb(164, 194, 176);
 }
 
-/* ///////////////////DO I NEED THIS??? */
 .update-edit-section {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-/* ///////////////////DO I NEED THIS??? */
 
 .edit-post-button > a {
     border: none;
@@ -238,7 +236,6 @@ form,
     margin-right: 5px;
 }
 
-
 .edit-post-button > a:hover {
     background-color: rgb(164, 194, 176);
 }
@@ -251,17 +248,10 @@ form,
 
 
 /* HEADERS */
-.main-page-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px 0px 20px 0px;
-}
-
 .index-header {
-    flex-grow: 1;
-    text-align: center;
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: "Caveat", cursive;
     font-style: normal;
 }
@@ -274,13 +264,10 @@ form,
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
   font-weight: bold;
   background-color: rgb(191, 220, 203);
   padding: 7px;
   height: 2.5em;
-  margin-left: auto;
-  margin-right: 50px;
   border-radius: 20px;
   color: rgb(0, 0, 0);
   cursor: pointer;
@@ -293,9 +280,18 @@ form,
 }
 
 .new-post-button > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     font-weight: bold;
     color: black;
+}
+
+.new-post-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
 .edit-header {
@@ -304,6 +300,7 @@ form,
     font-style: normal;
 }
 
+.new-header > h1,
 .edit-header > h1 {
     display: flex;
     justify-content: center;
@@ -313,6 +310,8 @@ form,
 
 .new-header {
     margin: 10px 15px;
+    font-family: "Caveat", cursive;
+    font-style: normal;
 }
 
 .profile-header {
@@ -416,9 +415,6 @@ form,
     margin-top: 7px;
 }
 /* HEADERS */
-
-
-
 
 
 /* MAIN PAGE */
@@ -527,6 +523,8 @@ form,
     margin: 1%;
 }
 
+.tip-suggestions,
+.food-suggestions,
 .stay-suggestions {
     display: flex;
     justify-content: center;
@@ -536,20 +534,27 @@ form,
     background-color: white;
     width: 80%;
     margin-left: 10%;
+    margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.tip-suggestions > h2,
+.food-suggestions > h2,
 .stay-suggestions > h2 {
     margin: 2%;
     text-align: center;
 }
 
+.tip-suggestions > h5,
+.food-suggestions > h5,
 .stay-suggestions > h5 {
     margin: 2% 5%;
     text-align: center;
 }
 
+.tip-suggestions form, 
+.food-suggestions form, 
 .stay-suggestions form {
     display: flex;
     flex-direction: column;
@@ -557,87 +562,9 @@ form,
     margin-top: 20px;
 }
 
-.stay-suggestions textarea {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 10px;
-}
-
-.food-suggestions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    flex-direction: column;
-    background-color: white;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 2%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.food-suggestions > h2 {
-    margin: 2%;
-    text-align: center;
-}
-
-.food-suggestions > h5 {
-    margin: 2% 5%;
-    text-align: center;
-}
-
-.food-suggestions form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
+.stay-suggestions textarea,
+.tip-suggestions textarea,
 .food-suggestions textarea {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 10px;
-}
-
-.tip-suggestions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    flex-direction: column;
-    background-color: white;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 2%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.tip-suggestions > h2 {
-    margin: 2%;
-    text-align: center;
-}
-
-.tip-suggestions > h5 {
-    margin: 2% 5%;
-    text-align: center;
-}
-
-.tip-suggestions form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.tip-suggestions textarea {
     width: 100%;
     max-width: 400px;
     padding: 10px;
@@ -659,18 +586,8 @@ form,
     margin: 1%;
 }
 
-
-
-/* GOES HERE /////////////////////////////////////////////////// */
-
-
+.new-post,
 .edit-post {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-}
-
-.new-post {
     display: flex;
     justify-content: center;
     margin: 20px;
@@ -736,24 +653,29 @@ form,
 
     .index-header {
         flex-direction: column;
+        flex-wrap: wrap;
         align-items: center;
         text-align: center;
+        margin-top: 0%;
     }
+
+    .index-header > h1,
     .edit-header > h1 {
         font-size: 40px;
     }
     .nav-item {
         font-size: 18px;
     }
+    
+    .new-post-button {
+        flex-direction: column;
+        justify-content: center;
+       
+    }
 }
 
 .post-container > a {
     text-decoration: none;
 }
-
-/* POST PAGE */
-
-
-
 
 

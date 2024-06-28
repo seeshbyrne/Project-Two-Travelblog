@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
+
     <%- include('../partials/_navbar.ejs') %>
 
-<div class="main-page-header">
-    <div class="index-header">
-        <h1>Where would you like to go?</h1>
-    </div>
-    <div class="new-post-button">
-            <a href="/posts/new">Add new post</a>
-        </div>  
-    </div>
-    
+<div class="index-header">
+    <h1>Where would you like to go?</h1>
+</div>
+
+<div class="new-post-button-container">
+<div class="new-post-button">
+    <a href="/posts/new">Add new post</a>
+</div>  
+</div>
+
 <div class="container">
     </div>
         <div class="row" >
@@ -30,7 +32,7 @@
                             <div class="post-image-container">
                                 <img src="<%= post.images[0] %>" alt="<%= post.city %> image" class="post-image">
                             <div class="post-text">
-                                    <h4><%= post.city %></h4><p><%= post.country %></p>
+                                <h4><%= post.city %></h4><p><%= post.country %></p>
                             </div>  
                         </div>
                         </a>
@@ -39,6 +41,5 @@
             <% }) %>
         </div>
     </div>
-
 </body>
 </html>

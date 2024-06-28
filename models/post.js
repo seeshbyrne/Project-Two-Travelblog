@@ -18,10 +18,10 @@ const postSchema = new mongoose.Schema({
     tip: [{
         type: String
     }],
-    favouritedByUsers: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    }],
+    // favouritedByUsers: [{
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'User',
+    // }],
     images: [{
       type: String
     }],
@@ -32,21 +32,10 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    favoritedByUsers: [{ //square brackets makes it many to many
+    favoritedByUsers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     }],
-    // foodSuggestions: [{
-    //     //user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    //     //suggestion: String
-    //     type: String
-    // }],
-    // staySuggestions: [{
-    //     // user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    //     // suggestion: String
-    //     type: String
-    // }]
-
   });
 
   module.exports = mongoose.model('Post', postSchema);

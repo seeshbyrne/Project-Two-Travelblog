@@ -10,10 +10,7 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div class="edit-header">
-    <h1>Edit Post</h1>
-    </div>
-
+    <div class="edit-header"><h1>Edit Post</h1></div>
 <div class="edit-post">
     <form action="/posts/<%= post._id %>?_method=PUT" method="post" class="d-flex flex-column gap-3" enctype="multipart/form-data">
 
@@ -66,15 +63,8 @@
         <input type="file" name="image">
         <button>Upload an Image</button>
     </form>
-
-    <!-- <div class="mb-3">
-        <label class="form-label">Image:</label>
-        <input class="form-control" type="file" name="image" value="<%= post.images %>">
-    </div> -->
-
-
+    
 </form>
-
 </div>
 </body>
 </html>

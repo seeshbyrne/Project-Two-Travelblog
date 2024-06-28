@@ -28,7 +28,7 @@
         <%= post.favoritedByUsers.length %></p>
     </div>
 
-        <div class="stay-suggestions">
+    <div class="stay-suggestions">
         <h2><strong>Top Places to Stay:</strong></h2>
             <% post.accommodation.forEach(suggestion => { %>
                 <h5><%= suggestion %></h5>
@@ -37,9 +37,9 @@
                 <textarea name="accommodation" placeholder="Suggest a place to stay" required></textarea>
                 <button>Add suggestion</button>
             </form>
-        </div>
+    </div>
 
-        <div class="food-suggestions">
+    <div class="food-suggestions">
         <h2><strong>Top Places to Eat:</strong></h2>
             <% post.food.forEach(suggestion => { %>
                 <h5><%= suggestion %></h5>
@@ -48,9 +48,9 @@
                 <textarea name="food" placeholder="Add a food suggestion" required></textarea>
                 <button>Add suggestion</button>
             </form>
-        </div>
+    </div>
 
-        <div class="tip-suggestions">
+    <div class="tip-suggestions">
             <h2><strong>Top Tips: <%= post.tips %></strong></h2>
             <% post.tip.forEach(tip => { %>
                 <h5><%= tip %></h5>
@@ -68,8 +68,8 @@
         </form>
     </div>
 
-<div class="edit-delete-container">
-    <div class="favourite">
+
+<div class="favourite">
     <% if (alreadyFavorited) { %>
         <form action="/posts/<%= post._id %>/favorite?_method=DELETE" method="post">
             <button> Remove from favorites</button>
@@ -82,21 +82,21 @@
             </button>
         </form>
     <% } %>
-    </div>
-
-<% if (isOwner) { %>
-    <div class="edit-post-button">
-        <a href="/posts/<%= post._id %>/edit">Edit Post</a>
-    </div>
-    <form action="/posts/<%= post._id %>?_method=DELETE"
-        method="post">
-        <button>Delete Post</button>
-    </form>
-<% } %>
 </div>
-    
 
+    <div class="edit-delete-container">
+        <% if (isOwner) { %>
+            <div class="edit-post-button">
+                <a href="/posts/<%= post._id %>/edit">Edit Post</a>
+            </div>
+            <form action="/posts/<%= post._id %>?_method=DELETE"
+                method="post">
+                <button>Delete Post</button>
+            </form>
+        <% } %>
     </div>
+    
+</div>
 </div>
 </body>
 </html>
