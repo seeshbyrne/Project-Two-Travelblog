@@ -20,50 +20,50 @@
         </div>
 
         <div class="mb-3">
-        <label class="form-label">Country:</label>
+            <label class="form-label">Country:</label>
             <input class="form-control" name="country" required value="<%= post.country %>">
         </div>
 
         <div class="mb-3">
-        <label class="form-label">Accommodation Ideas:</label>
-        <div>
-            <% post.accommodation.forEach(suggestion => { %>
-                <% if (suggestion.trim() !== "") { %>
-                <input class="form-control" name="accommodation" value="<%= suggestion %>">
-                <% } %>
-            <% }) %>
+            <label class="form-label">Accommodation Ideas:</label>
+                <div>
+                    <% post.accommodation.forEach(suggestion => { %>
+                        <% if (suggestion.trim() !== "") { %>
+                        <input class="form-control" name="accommodation" value="<%= suggestion %>">
+                        <% } %>
+                    <% }) %>
+                </div>
         </div>
-    </div>
 
     <div class="mb-3">
         <label class="form-label">Food Suggestions:</label>
-        <div>
-            <% post.food.forEach(suggestion => { %>
-                <% if (suggestion.trim() !== "") { %>
-                <input class="form-control" name="food" value="<%= suggestion %>">
-                <% } %>
-            <% }) %>
-        </div>
+            <div>
+                <% post.food.forEach(suggestion => { %>
+                    <% if (suggestion.trim() !== "") { %>
+                    <input class="form-control" name="food" value="<%= suggestion %>">
+                    <% } %>
+                <% }) %>
+            </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Top Tips:</label>
-        <div>
-            <% post.tip.forEach(tip => { %>
-                <% if (tip.trim() !== "") { %>
-                <input class="form-control" name="tip" value="<%= tip %>">
-                <% } %>
-            <% }) %>
-        </div>
+            <div>
+                <% post.tip.forEach(tip => { %>
+                    <% if (tip.trim() !== "") { %>
+                    <input class="form-control" name="tip" value="<%= tip %>">
+                    <% } %>
+                <% }) %>
+            </div>
     </div>
 
-<button>Update Post</button>
+    <button>Update Post</button>
 
     <form action="/posts/<%= post._id %>/images" class="d-flex flex-column gap-3" enctype="multipart/form-data" method="post">
         <input type="file" name="image">
         <button>Upload an Image</button>
     </form>
-    
+
 </form>
 </div>
 </body>

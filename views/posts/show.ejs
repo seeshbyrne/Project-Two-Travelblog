@@ -59,7 +59,7 @@
                 <textarea name="tip" placeholder="Add your Top Tip" required></textarea>
                 <button>Add your Top Tip</button>
             </form>
-        </div>
+    </div>
 
     <div class="image-upload">
         <form action="/posts/<%= post._id %>/images" enctype="multipart/form-data" method="post">
@@ -69,20 +69,20 @@
     </div>
 
 
-<div class="favourite">
-    <% if (alreadyFavorited) { %>
-        <form action="/posts/<%= post._id %>/favorite?_method=DELETE" method="post">
-            <button> Remove from favorites</button>
-        </form>
-    <% } else { %>
-        <form action="/posts/<%= post._id %>/favorite" method="post">
-            <button>
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22">
-                Add to favorites
-            </button>
-        </form>
-    <% } %>
-</div>
+    <div class="favourite">
+        <% if (alreadyFavorited) { %>
+            <form action="/posts/<%= post._id %>/favorite?_method=DELETE" method="post">
+                <button> Remove from favorites</button>
+            </form>
+        <% } else { %>
+            <form action="/posts/<%= post._id %>/favorite" method="post">
+                <button>
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22">
+                    Add to favorites
+                </button>
+            </form>
+        <% } %>
+    </div>
 
     <div class="edit-delete-container">
         <% if (isOwner) { %>
@@ -95,8 +95,7 @@
             </form>
         <% } %>
     </div>
-    
-</div>
+
 </div>
 </body>
 </html>

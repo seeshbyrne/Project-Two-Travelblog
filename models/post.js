@@ -18,10 +18,6 @@ const postSchema = new mongoose.Schema({
     tip: [{
         type: String
     }],
-    // favouritedByUsers: [{
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'User',
-    // }],
     images: [{
       type: String
     }],

@@ -11,29 +11,33 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <div class="profile-header"><h1>Profile</h1></div>
+    <div class="profile-header">
+        <h1>Profile</h1>
+    </div>
+
     <hr class="profile-separator">
 
     <div class="destination-header">
         <h2>My Destinations</h2>
-    </div>    
-        <div class="row my-destinations">
-            <% myPosts.forEach((post) => { %>
-                <div class="col-md-4 mb-4">
-                    <div class="post-container">
-                        <a href="/posts/<%= post._id %>">
-                            <div class="post-image-container">
-                                <img src="<%= post.images[0] %>" alt="<%= post.city %> image" class="post-image">
-                                <div class="post-text">
-                                    <h4><%= post.city %></h4>
-                                    <p><%= post.country %></p>
-                                </div>
+    </div> 
+
+    <div class="row my-destinations">
+        <% myPosts.forEach((post) => { %>
+            <div class="col-md-4 mb-4">
+                <div class="post-container">
+                    <a href="/posts/<%= post._id %>">
+                        <div class="post-image-container">
+                            <img src="<%= post.images[0] %>" alt="<%= post.city %> image" class="post-image">
+                            <div class="post-text">
+                                <h4><%= post.city %></h4>
+                                <p><%= post.country %></p>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
-            <% }) %>
-        </div>
+            </div>
+        <% }) %>
+    </div>    
 
     <div class="favorites-header">
         <p><img src="https://static.vecteezy.com/system/resources/thumbnails/010/145/455/small_2x/heart-icon-sign-symbol-design-free-png.png" alt="full heart" width="22" height="22"></p>  
@@ -57,6 +61,6 @@
             </div>
         <% }) %>
     </div>
-    
+
 </body>
 </html>
