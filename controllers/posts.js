@@ -53,7 +53,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE 
-router.post('/', upload.array('image', 6), async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
     try {
         if (!req.file) {
             throw new Error("Image file is required");
