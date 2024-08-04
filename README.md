@@ -1,5 +1,7 @@
 # TravelBug
 
+![welcome image](https://github.com/seeshbyrne/Project-Two-Travelblog/assets/169792063/9e217333-83ac-466b-b762-8e4dd32b680d)
+
 ## Travel Blog
 
 Welcome to my travel blog! This platform allows users to explore and share their travel experiences from around the world. Whether you're seeking inspiration for your next adventure or want to share your favorite destinations, our website provides a space to connect with fellow travelers.
@@ -24,7 +26,7 @@ Responsive Design: Enjoy a seamless experience across devices with responsive de
 
 ## Have a look!
 
-[Link for game here] ///////////////////////////// NEED TO FILL IN HERE ///////////////////
+https://saoirse-travel-blog-6a93d4eaeeac.herokuapp.com/
 
 ## Attributions
 
@@ -53,5 +55,10 @@ https://fonts.google.com/
 
 ## Next Steps
 
+<<<<<<< HEAD
 ///////////////////////////// NEED TO FILL IN HERE ///////////////////
 
+=======
+Enable users to look at each other's profiles and posts.
+Enable users to remove selected images from their posts.
+>>>>>>> refs/remotes/origin/main
